@@ -10,3 +10,5 @@ task :zsh do
   Application::Zsh.new(base_directory).install
 end
 
+task :install => [:vim, :zsh]
+task :default => :install
