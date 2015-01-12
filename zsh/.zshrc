@@ -1,3 +1,8 @@
+# YOU! YES, YOU!
+#
+# Try not to edit this file directly, for it is generated
+# by corytheboyd/dotfiles.
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -5,7 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="geoffgarside"
 
 # oh-my-zsh plugins to load
-plugins=(git, osx)
+plugins=(git ruby bundler osx)
 
 # Initialize oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -14,3 +19,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# Load custom configuration
+source ~/.zshrc.local
+
+# If you see anything after this line, it probably
+# belongs in ~/.zshrc.local. Don't be lazy!

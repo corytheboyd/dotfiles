@@ -1,54 +1,57 @@
+require './lib/link'
+
 task :vim do
   chdir('vim') do
     vimrc_before_target = File.expand_path(File.join(ENV['HOME'], '.vimrc.before'))
     vimrc_before_source = File.expand_path('.vimrc.before')
-
-    if File.exists?(vimrc_before_target)
-      print("#{vimrc_before_target} exists. Overwrite? [y/n]")
-      exit unless STDIN.gets =~ /y/i
-      rm(vimrc_before_target)
-    end
-    sh("ln -s #{vimrc_before_source} #{vimrc_before_target}")
-
     vimrc_after_source = File.expand_path('.vimrc.after')
     vimrc_after_target = File.expand_path(File.join(ENV['HOME'], '.vimrc.after'))
 
-    if File.exists?(vimrc_after_target)
-      print("#{vimrc_after_target} exists. Overwrite? [y/n]")
-      exit unless STDIN.gets =~ /y/i
-      rm(vimrc_after_target)
+    Link.new(vimrc_before_source, vimrc_before_target).create
+    Link.new(vimrc_after_source, vimrc_after_target).create
+  end
+end
+
+module Zsh
+  extend self
+  extend Rake::DSL
+
+  def install_zshrc
+    source = File.expand_path('.zshrc')
+    target = File.expand_path(File.join(ENV['HOME'], '.zshrc'))
+    Link.new(source, target).create
+  end
+
+  def install_zshrc_local
+    source = File.expand_path('.zshrc.local')
+    target = File.expand_path(File.join(ENV['HOME'], '.zshrc.local'))
+    unless File.exist?(target)
+      cp(source, target)
     end
-    sh("ln -s #{vimrc_after_source} #{vimrc_after_target}")
+  end
+
+  def install_customizations
+    chdir('custom') do
+      Dir.glob('*.zsh').each do |file|
+        source = File.expand_path(file)
+        target = File.expand_path(File.join(zsh_custom_dir, file))
+        Link.new(source, target).create
+      end
+    end
+  end
+
+  private
+
+  def zsh_custom_dir
+    @zsh_custom_dir ||= File.join(ENV['ZSH'], 'custom')
   end
 end
 
 task :zsh do
   chdir('zsh') do
-    # Install .zshrc
-    zshrc_source = File.expand_path('.zshrc')
-    zshrc_target = File.expand_path(File.join(ENV['HOME'], '.zshrc'))
-    if File.exists?(zshrc_target)
-      print("#{zshrc_target} exists. Overwrite? [y/n]")
-      exit unless STDIN.gets =~ /y/i
-      rm(zshrc_target)
-    end
-    sh("ln -s #{zshrc_source} #{zshrc_target}")
-
-    # Install custom files
-    chdir('custom') do
-      zsh_custom_dir = File.join(ENV['ZSH'], 'custom')
-      zsh_files = Dir.glob('*.zsh')
-      zsh_files.each do |file|
-        source = File.expand_path(file)
-        target = File.join(zsh_custom_dir, file)
-        if File.exist?(target)
-          print("#{target} exists. Overwrite? [y/n]")
-          next unless STDIN.gets =~ /y/i
-          rm(target)
-        end
-        sh("ln -s #{source} #{target}")
-      end
-    end
+    Zsh.install_zshrc
+    Zsh.install_zshrc_local
+    Zsh.install_customizations
   end
 end
 
