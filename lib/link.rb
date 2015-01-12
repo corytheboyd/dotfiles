@@ -9,17 +9,22 @@ class Link
   end
 
   def create
-    if File.exist?(target)
-      print("#{target} exists. Overwrite? [y/n]")
+    if !File.exist?(target)
+      ln(source, target)
+      print("Link created: #{target} -> #{source}\n")
+    elsif !link_established?
+      print("#{target} exists. Replace? [y/n]: ")
       return unless STDIN.gets =~ /y/i
       rm(target) and create
-    else
-      ln(source, target)
-      print("Link created: #{target}\n")
     end
   end
 
   private
+
+  def link_established?
+    File.symlink?(target) &&
+      File.readlink(target) == source
+  end
 
   def rm(file)
     %x|rm #{file}|
