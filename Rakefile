@@ -1,3 +1,27 @@
+task :vim do
+  chdir('vim') do
+    vimrc_before_target = File.expand_path(File.join(ENV['HOME'], '.vimrc.before'))
+    vimrc_before_source = File.expand_path('.vimrc.before')
+
+    if File.exists?(vimrc_before_target)
+      print("#{vimrc_before_target} exists. Overwrite? [y/n]")
+      exit unless STDIN.gets =~ /y/i
+      rm(vimrc_before_target)
+    end
+    sh("ln -s #{vimrc_before_source} #{vimrc_before_target}")
+
+    vimrc_after_source = File.expand_path('.vimrc.after')
+    vimrc_after_target = File.expand_path(File.join(ENV['HOME'], '.vimrc.after'))
+
+    if File.exists?(vimrc_after_target)
+      print("#{vimrc_after_target} exists. Overwrite? [y/n]")
+      exit unless STDIN.gets =~ /y/i
+      rm(vimrc_after_target)
+    end
+    sh("ln -s #{vimrc_after_source} #{vimrc_after_target}")
+  end
+end
+
 task :zsh do
   chdir('zsh') do
     # Install .zshrc
@@ -27,3 +51,4 @@ task :zsh do
     end
   end
 end
+
