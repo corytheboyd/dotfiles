@@ -15,6 +15,9 @@ plugins=(git ruby bundler osx)
 # Initialize oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+EDITOR=`which vim`
+VISUAL=$EDITOR
+
 # Add rbenv to path and initialize on shell start
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
