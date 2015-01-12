@@ -4,11 +4,17 @@ Files that have been prepended with a dot.
 
 ## Usage
 
+Installation:
 ```
 cd ~
 git clone git@github.com:corytheboyd/dotfiles.git
 cd dotfiles
 rake install
+```
+
+Update dotfiles:
+```
+update_dotfiles
 ```
 
 ## ZSH
