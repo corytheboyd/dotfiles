@@ -17,3 +17,7 @@ let NERDTreeShowHidden=1
 " https://github.com/mustache/vim-mustache-handlebars
 "
 NeoBundle 'mustache/vim-mustache-handlebars'
+
+" https://github.com/vim-scripts/closetag.vim
+"
+NeoBundle 'vim-scripts/closetag.vim'
