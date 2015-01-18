@@ -14,7 +14,7 @@ desc "Update local dotfiles"
 task :update do
   dotfiles_directory = File.expand_path('~/dotfiles')
   chdir(dotfiles_directory)
-  sh("git pull -f origin master")
+  sh("git fetch && git reset --hard origin/master")
   Rake::Task['install'].invoke
 end
 
