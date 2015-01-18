@@ -12,3 +12,8 @@ if has("clipboard")
 endif
 
 let NERDTreeShowHidden=1
+
+" A vim plugin for working with mustache and handlebars templates
+" https://github.com/mustache/vim-mustache-handlebars
+"
+NeoBundle 'mustache/vim-mustache-handlebars'
