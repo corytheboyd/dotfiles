@@ -21,3 +21,8 @@ NeoBundle 'mustache/vim-mustache-handlebars'
 " https://github.com/vim-scripts/closetag.vim
 "
 NeoBundle 'vim-scripts/closetag.vim'
+
+" Baller-as-fuck sublime multi cursor shit
+" https://github.com/terryma/vim-multiple-cursors
+"
+NeoBundle 'terryma/vim-multiple-cursors'
