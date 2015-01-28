@@ -25,5 +25,8 @@ eval "$(rbenv init -)"
 # Load custom configuration
 source ~/.zshrc.local
 
+# Add sweet, sweet colors to man pages
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'nnoremap <space> <C-F>| nnoremap q :q<cr>| set ft=man ts=8 nomod nolist nonu noma' -\""
+
 # If you see anything after this line, it probably
 # belongs in ~/.zshrc.local. Don't be lazy!
