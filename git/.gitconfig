@@ -1,0 +1,52 @@
+[user]
+  name = Cory Boyd
+  email = corytheboyd@gmail.com
+
+[core]
+  editor = $EDITOR
+  excludesfile = ~/.gitignore
+  pager = less -FRSX
+
+[color]
+  filemode = false
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  pager = true
+
+[branch]
+  ; Setup remote branches to rebase on pull
+  autosetuprebase = always
+
+[push]
+  ; Always make me specify the branch I'm pushing
+  default = nothing
+
+[diff]
+  tool = opendiff
+
+[merge]
+  tool = opendiff
+
+[difftool]
+  prompt = false
+
+[alias]
+  ; SVN aliases for the weak
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+
+; The name stands for "reuse recorded resolution" 
+; and as the name implies, it allows you to ask Git 
+; to remember how you've resolved a hunk conflict so 
+; that the next time it sees the same conflict, Git 
+; can automatically resolve it for you.
+;
+; http://git-scm.com/blog/2010/03/08/rerere.html
+;
+[rerere]
+  enabled = true
+  autoupdate = true
