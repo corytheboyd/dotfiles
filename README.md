@@ -29,3 +29,8 @@ Assumes that you have installed oh-my-zsh: https://github.com/robbyrussell/oh-my
 Assumes that you have installed dotvim: https://github.com/astrails/dotvim
 
 * Links `~/.vimrc.before` and `~/.vimrc.after` to their respective files in this repository
+
+## GIT
+
+* Links `~/.gitconfig` and `~/.gitignore`.
+
