@@ -22,11 +22,21 @@ VISUAL=$EDITOR
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# Load custom configuration
-source ~/.zshrc.local
+# Open editor to create a note and push it to local pushnoted
+note() {
+  if ! hash pushnote ; then echo >&2 "pushnote not installed. 'gem install pushnote'" ; exit 1 ; fi
+  if [[ -z $1 ]] ; then title="Untitled" ; else title=$1 ; fi
+  tempfile=~/.pushnote/tempnote.md
+  $EDITOR $tempfile
+  cat $tempfile | pushnote --title $title
+  rm $tempfile
+}
 
 # Add sweet, sweet colors to man pages
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'nnoremap <space> <C-F>| nnoremap q :q<cr>| set ft=man ts=8 nomod nolist nonu noma' -\""
+
+# Load custom configuration
+source ~/.zshrc.local
 
 # If you see anything after this line, it probably
 # belongs in ~/.zshrc.local. Don't be lazy!
