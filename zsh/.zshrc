@@ -35,6 +35,9 @@ note() {
 # Add sweet, sweet colors to man pages
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'nnoremap <space> <C-F>| nnoremap q :q<cr>| set ft=man ts=8 nomod nolist nonu noma' -\""
 
+# Prefer local binaries over system
+export PATH=/usr/local/bin:$PATH
+
 # Load custom configuration
 source ~/.zshrc.local
 
