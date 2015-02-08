@@ -19,7 +19,7 @@ task :git do
 end
 
 task :source do
-  sh('source ~/.zshrc')
+  `/bin/zsh -c 'source ~/.zshrc'`
 end
 
 desc "Update local dotfiles"

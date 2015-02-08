@@ -15,8 +15,6 @@ plugins=(git ruby bundler osx opp alias-tips zsh-syntax-highlighting)
 # Initialize oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-bindkey -v
-
 export EDITOR=`which vim`
 export VISUAL=$EDITOR
 
