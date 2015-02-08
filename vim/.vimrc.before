@@ -2,27 +2,9 @@
 "
 " This is where you should pre-set various plugin flags, enable/disable options etc.
 " This is for things you would normally put into your vimrc file.
-"
+
+" Set the color scheme 
+colorscheme badwolf " https://github.com/sjl/badwolf
+
+" Enable syntax processing
 syntax enable
-set background=dark
-colorscheme solarized
-
-if has("clipboard")
-  set clipboard=unnamed
-endif
-
-let NERDTreeShowHidden=1
-
-" A vim plugin for working with mustache and handlebars templates
-" https://github.com/mustache/vim-mustache-handlebars
-"
-NeoBundle 'mustache/vim-mustache-handlebars'
-
-" https://github.com/vim-scripts/closetag.vim
-"
-NeoBundle 'vim-scripts/closetag.vim'
-
-" Baller-as-fuck sublime multi cursor shit
-" https://github.com/terryma/vim-multiple-cursors
-"
-NeoBundle 'terryma/vim-multiple-cursors'

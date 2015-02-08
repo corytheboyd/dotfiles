@@ -39,19 +39,9 @@ module Application
 
     def install_plugins
       FileUtils.chdir(plugins_dir) do
-        clone_repo('opp.zsh', 'git@github.com:hchbaw/opp.zsh.git')
-        clone_repo('zsh-syntax-highlighting', 'git@github.com:zsh-users/zsh-syntax-highlighting.git')
-        clone_repo('alias-tips', 'git@github.com:djui/alias-tips.git')
-      end
-    end
-
-    def clone_repo(name, url)
-      if File.directory?(name)
-        FileUtils.chdir(name, verbose: false) do
-          `git fetch && git reset --hard origin/master`
-        end
-      else
-        `git clone #{url} #{name}`
+        clone_repo(name: 'opp.zsh', url: 'git@github.com:hchbaw/opp.zsh.git')
+        clone_repo(name: 'zsh-syntax-highlighting', url: 'git@github.com:zsh-users/zsh-syntax-highlighting.git')
+        clone_repo(name: 'alias-tips', url: 'git@github.com:djui/alias-tips.git')
       end
     end
 

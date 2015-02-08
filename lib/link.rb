@@ -1,6 +1,4 @@
 class Link
-  include Rake::DSL
-
   attr_accessor :source, :target
 
   def initialize(source, target)
@@ -11,11 +9,11 @@ class Link
   def create
     if !File.exist?(target)
       ln(source, target)
-      print("Link created: #{target} -> #{source}\n")
+      puts " * Link created: #{target} -> #{source}\n"
     elsif !link_established?
-      print("#{target} exists. Replace? [y/n]: ")
+      puts "#{target} exists. Replace? [y/n]: "
       return unless STDIN.gets =~ /y/i
-      rm(target) and create
+      FileUtils.rm(target) and create
     end
   end
 
