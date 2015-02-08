@@ -1,7 +1,7 @@
 module Application
   class Git < Base
     def install
-      chdir(base_directory) do
+      FileUtils.chdir(base_directory) do
         add_gitconfig
         add_gitignore
       end

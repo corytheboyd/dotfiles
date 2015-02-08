@@ -2,8 +2,6 @@ require './lib/link'
 
 module Application
   class Base
-    include Rake::DSL
-
     attr_reader :base_directory
 
     def initialize(base_directory)

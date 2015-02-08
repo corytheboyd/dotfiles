@@ -1,7 +1,7 @@
 module Application
   class Vim < Base
     def install
-      chdir(base_directory) do
+      FileUtils.chdir(base_directory) do
         add_vimrc_before
         add_vimrc_after
       end
