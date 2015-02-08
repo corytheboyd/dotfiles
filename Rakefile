@@ -18,6 +18,12 @@ task :git do
   Application::Git.new(base_directory).install
 end
 
+task :irb do
+  puts "Installing irb..."
+  base_directory = File.expand_path('irb')
+  Application::Irb.new(base_directory).install
+end
+
 task :source do
   `/bin/zsh -c 'source ~/.zshrc'`
 end
@@ -30,5 +36,5 @@ task :update do
   Rake::Task['install'].invoke
 end
 
-task :install => [:vim, :zsh, :git, :source]
+task :install => [:vim, :zsh, :git, :irb, :source]
 task :default => :install
