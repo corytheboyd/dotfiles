@@ -1,4 +1,8 @@
 bindkey -v
+
+source $ZSH_CUSTOM/plugins/opp.zsh/opp.zsh
+source $ZSH_CUSTOM/plugins/opp.zsh/opp/*.zsh
+
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
