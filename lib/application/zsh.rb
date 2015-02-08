@@ -3,7 +3,8 @@ module Application
     attr_accessor :base_directory
 
     def install
-      chdir(base_directory) do
+      FileUtils.chdir(base_directory) do
+        install_plugins
         install_zshrc
         install_zshrc_local
         install_customizations
@@ -22,17 +23,35 @@ module Application
       source = File.expand_path(File.join(base_directory, '.zshrc.local'))
       target = File.expand_path(File.join(home_directory, '.zshrc.local'))
       unless File.exist?(target)
-        cp(source, target)
+        FileUtils.cp(source, target)
       end
     end
 
     def install_customizations
-      chdir('custom') do
+      FileUtils.chdir('custom') do
         Dir.glob('*.zsh').each do |file|
           source = File.expand_path(file)
           target = File.expand_path(File.join(zsh_custom_dir, file))
           Link.new(source, target).create
         end
+      end
+    end
+
+    def install_plugins
+      FileUtils.chdir(plugins_dir) do
+        clone_repo('opp.zsh', 'git@github.com:hchbaw/opp.zsh.git')
+        clone_repo('zsh-syntax-highlighting', 'git@github.com:zsh-users/zsh-syntax-highlighting.git')
+        clone_repo('alias-tips', 'git@github.com:djui/alias-tips.git')
+      end
+    end
+
+    def clone_repo(name, url)
+      if File.directory?(name)
+        FileUtils.chdir(name, verbose: false) do
+          `git fetch && git reset --hard origin/master`
+        end
+      else
+        `git clone #{url} #{name}`
       end
     end
 
@@ -42,6 +61,10 @@ module Application
 
     def zsh_custom_dir
       @zsh_custom_dir ||= File.join(zsh_dir, 'custom')
+    end
+
+    def plugins_dir
+      File.join(zsh_custom_dir, 'plugins')
     end
   end
 end
