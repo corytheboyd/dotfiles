@@ -81,6 +81,9 @@
   set splitbelow
   set splitright
 
+" vim-textobj-user https://github.com/nelstrom/vim-textobj-rubyblock
+  runtime macros/matchit.vim
+
 " VISUAL
   colorscheme tomorrow-night " Set the color scheme
   syntax enable              " Enable syntax processing
@@ -103,4 +106,4 @@
 
   " File based indentation
   " Indentation files are loaded from ~/.vim/indent/python.vim
-  filetype indent on
+  filetype indent plugin on
