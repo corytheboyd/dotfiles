@@ -1,5 +1,5 @@
 " PATHOGEN: https://github.com/tpope/vim-pathogen
-	execute pathogen#infect()
+  execute pathogen#infect()
 
 " Ag https://github.com/rking/ag.vim
   nnoremap <leader>a :Ag<CR>
@@ -8,23 +8,23 @@
   let g:airline_powerline_fonts = 1
 
 " COMPATIBILITY
-	set nocompatible " Turn off vi compatibility
-	set backspace=2 " Make backspace work like most other apps
+  set nocompatible " Turn off vi compatibility
+  set backspace=2 " Make backspace work like most other apps
 
 " CtrlP
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll|gem)$',
     \ }
-  
+
   " Hand off searching to ag
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " KEY MAPPINGS
-	" Reassign leader from \ to ,
-	let mapleader = ','
+  " Reassign leader from \ to ,
+  let mapleader = ','
 
-	" Turn off search highlight
+  " Turn off search highlight
   nnoremap <C-n> :nohlsearch<CR>
 
   " Toggle Gundo http://sjl.bitbucket.org/gundo.vim/
@@ -52,6 +52,9 @@
   " Save session. Reopen with `vim -S`
   nnoremap <leader>s :mksession<CR>
 
+  " Ag
+  nnoremap <leader>a :Ag 
+
 " NERDTree
   let NERDTreeShowHidden=1 " Show hidden files by default.
 
@@ -59,11 +62,11 @@
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " PERFORMANCE
-	" Vim loves to redraw the screen during things it probably
-	" doesn't need to—like in the middle of macros. This tells
-	" Vim not to bother redrawing during these scenarios,
-	" leading to faster macros.
-	set lazyredraw
+  " Vim loves to redraw the screen during things it probably
+  " doesn't need to—like in the middle of macros. This tells
+  " Vim not to bother redrawing during these scenarios,
+  " leading to faster macros.
+  set lazyredraw
 
   " Files to ignore when working with wildcards.
   " CtrlP uses this as part of its own exclusion.
