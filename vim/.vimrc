@@ -76,8 +76,8 @@
   set splitright
 
 " VISUAL
-	colorscheme badwolf " Set the color scheme
-  syntax enable       " Enable syntax processing
+	colorscheme tomorrow-night " Set the color scheme
+  syntax enable              " Enable syntax processing
 
 	set number      " Show line numbers
 	set cursorline  " Highlight the current line

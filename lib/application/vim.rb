@@ -2,9 +2,10 @@ module Application
   class Vim < Base
     def install
       FileUtils.chdir(base_directory) do
-       install_pathogen
-       install_pathogen_plugins
-       add_vimrc
+        install_pathogen
+        install_powerline_fonts
+        install_pathogen_plugins
+        add_vimrc
       end
     end
 
@@ -38,17 +39,17 @@ module Application
     end
 
     def install_pathogen_plugins
-      install_pathogen_plugin('badwolf', 'git@github.com:sjl/badwolf.git')
-      install_pathogen_plugin('gundo.vim', 'git@github.com:sjl/gundo.vim.git')
-      install_pathogen_plugin('nerdtree', 'git@github.com:scrooloose/nerdtree.git')
-      install_pathogen_plugin('ctrlp.vim', 'git@github.com:kien/ctrlp.vim.git')
       install_pathogen_plugin('ag.vim', 'git@github.com:rking/ag.vim.git')
+      install_pathogen_plugin('ctrlp.vim', 'git@github.com:kien/ctrlp.vim.git')
       install_pathogen_plugin('endwise.vim', 'git@github.com:tpope/vim-endwise.git')
       install_pathogen_plugin('fugitive.vim', 'git@github.com:tpope/vim-fugitive.git')
+      install_pathogen_plugin('gundo.vim', 'git@github.com:sjl/gundo.vim.git')
+      install_pathogen_plugin('nerdtree', 'git@github.com:scrooloose/nerdtree.git')
       install_pathogen_plugin('surround.vim', 'git@github.com:tpope/vim-surround.git')
-      install_pathogen_plugin('vim-gitgutter', 'git@github.com:airblade/vim-gitgutter.git')
       install_pathogen_plugin('vim-airline', 'git@github.com:bling/vim-airline.git')
       install_pathogen_plugin('vim-autoclose', 'git@github.com:Townk/vim-autoclose.git')
+      install_pathogen_plugin('vim-gitgutter', 'git@github.com:airblade/vim-gitgutter.git')
+      install_pathogen_plugin('vim-tomorrow-theme', 'git@github.com:chriskempson/vim-tomorrow-theme.git')
     end
 
     def install_pathogen_plugin(name, url)
