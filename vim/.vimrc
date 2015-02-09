@@ -2,7 +2,11 @@
   execute pathogen#infect()
 
 " Ag https://github.com/rking/ag.vim
-  nnoremap <C-f> :Ag<CR>
+  " Search for the word under the cursor
+  nnoremap <C-f> :Ag <cword><CR>
+
+  " Manually enter search term
+  nnoremap <leader>f :Ag 
 
 " Airline
   let g:airline_powerline_fonts = 1
