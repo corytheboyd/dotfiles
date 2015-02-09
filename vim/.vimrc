@@ -2,7 +2,7 @@
   execute pathogen#infect()
 
 " Ag https://github.com/rking/ag.vim
-  nnoremap <leader>a :Ag<CR>
+  nnoremap <C-f> :Ag<CR>
 
 " Airline
   let g:airline_powerline_fonts = 1
@@ -93,6 +93,13 @@
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
+
+" TEST RUNNING
+  let g:rspec_command = "Dispatch rspec {spec}"
+  map <Leader>t :call RunCurrentSpecFile()<CR>
+  map <Leader>s :call RunNearestSpec()<CR>
+  map <Leader>l :call RunLastSpec()<CR>
+  map <Leader>a :call RunAllSpecs()<CR>
 
 " vim-textobj-user https://github.com/nelstrom/vim-textobj-rubyblock
   runtime macros/matchit.vim
