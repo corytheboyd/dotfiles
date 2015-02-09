@@ -27,6 +27,9 @@ if [ -x /usr/libexec/path_helper ]; then
   eval `/usr/libexec/path_helper -s`
 fi
 
+# Load rbenv automatically
+eval "$(rbenv init -)"
+
 # Load custom configuration
 source ~/.zshrc.local
 
