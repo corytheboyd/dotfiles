@@ -104,6 +104,9 @@
   map <Leader>l :call RunLastSpec()<CR>
   map <Leader>a :call RunAllSpecs()<CR>
 
+" vim-rspec https://github.com/thoughtbot/vim-rspec
+  let g:rspec_command = "!bundle exec rspec {spec}"
+
 " vim-textobj-user https://github.com/nelstrom/vim-textobj-rubyblock
   runtime macros/matchit.vim
 
