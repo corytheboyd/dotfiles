@@ -3,3 +3,4 @@
 .zeus.sock
 tags
 */vendor
+*.swp
