@@ -1,6 +1,6 @@
 # dotfiles
 
-Files that have been prepended with a dot.
+Files that have been prepended with a dot. I use this to keep all of my machines configured exactly the same.
 
 ## Usage
 
