@@ -50,6 +50,7 @@ module Application
       install_pathogen_plugin('vim-autoclose', 'git@github.com:Townk/vim-autoclose.git')
       install_pathogen_plugin('vim-gitgutter', 'git@github.com:airblade/vim-gitgutter.git')
       install_pathogen_plugin('vim-tomorrow-theme', 'git@github.com:chriskempson/vim-tomorrow-theme.git')
+      install_pathogen_plugin('closetag.vim', 'git@github.com:vim-scripts/closetag.vim.git')
     end
 
     def install_pathogen_plugin(name, url)
