@@ -4,6 +4,9 @@
 " Ag https://github.com/rking/ag.vim
   nnoremap <leader>a :Ag<CR>
 
+" Airline
+  let g:airline_powerline_fonts = 1
+
 " COMPATIBILITY
 	set nocompatible " Turn off vi compatibility
 	set backspace=2 " Make backspace work like most other apps
