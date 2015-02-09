@@ -20,6 +20,9 @@
   " Hand off searching to ag
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
+  " Include dotfiles in searches. YOLO
+  let g:ctrlp_show_hidden = 1
+
 " KEY MAPPINGS
   " Reassign leader from \ to ,
   let mapleader = ','
