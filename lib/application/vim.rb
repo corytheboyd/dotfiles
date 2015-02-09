@@ -2,34 +2,13 @@ module Application
   class Vim < Base
     def install
       FileUtils.chdir(base_directory) do
-        install_pathogen
-        install_colorscheme
-        add_vimrc_before
-        add_vimrc_plugins
-        add_vimrc_after
-        add_vimrc
+       install_pathogen
+       install_pathogen_plugins
+       add_vimrc
       end
     end
 
     private
-
-    def add_vimrc_before
-      source = File.expand_path(File.join(base_directory, '.vimrc.before'))
-      target = File.expand_path(File.join(home_directory, '.vimrc.before'))
-      Link.new(source, target).create
-    end
-
-    def add_vimrc_after
-      source = File.expand_path(File.join(base_directory, '.vimrc.after'))
-      target = File.expand_path(File.join(home_directory, '.vimrc.after'))
-      Link.new(source, target).create
-    end
-
-    def add_vimrc_plugins
-      source = File.expand_path(File.join(base_directory, '.vimrc.plugins'))
-      target = File.expand_path(File.join(home_directory, '.vimrc.plugins'))
-      Link.new(source, target).create
-    end
 
     def add_vimrc
       source = File.expand_path(File.join(base_directory, '.vimrc'))
@@ -38,7 +17,7 @@ module Application
     end
 
     def install_pathogen
-      FileUtils.chdir('vendor') do
+      chdir_vendor do
         clone_repo(name: 'pathogen.vim', url: 'git@github.com:tpope/vim-pathogen.git') do
           autoload_dir = File.join(home_directory, '.vim/autoload')
           FileUtils.mkdir_p(autoload_dir)
@@ -50,17 +29,39 @@ module Application
       end
     end
 
-    def install_colorscheme
-      FileUtils.chdir('vendor') do
-        clone_repo(name: 'badwolf', url: 'git@github.com:sjl/badwolf.git') do |name, _|
-          color_files = Dir.glob(File.expand_path('colors/*.vim'))
-          color_files.each do |color_file|
-            base_name = File.basename(color_file)
-            target = File.expand_path(File.join(home_directory, ".vim/colors/#{base_name}"))
-            Link.new(color_file, target).create
-          end
+    def install_powerline_fonts
+      chdir_vendor do
+        clone_repo(name: 'powerline-fonts', url: 'git@github.com:powerline/fonts.git') do
+          system('./install.sh')
         end
       end
+    end
+
+    def install_pathogen_plugins
+      install_pathogen_plugin('badwolf', 'git@github.com:sjl/badwolf.git')
+      install_pathogen_plugin('gundo.vim', 'git@github.com:sjl/gundo.vim.git')
+      install_pathogen_plugin('nerdtree', 'git@github.com:scrooloose/nerdtree.git')
+      install_pathogen_plugin('ctrlp.vim', 'git@github.com:kien/ctrlp.vim.git')
+      install_pathogen_plugin('ag.vim', 'git@github.com:rking/ag.vim.git')
+      install_pathogen_plugin('endwise.vim', 'git@github.com:tpope/vim-endwise.git')
+      install_pathogen_plugin('fugitive.vim', 'git@github.com:tpope/vim-fugitive.git')
+      install_pathogen_plugin('surround.vim', 'git@github.com:tpope/vim-surround.git')
+      install_pathogen_plugin('vim-gitgutter', 'git@github.com:airblade/vim-gitgutter.git')
+      install_pathogen_plugin('vim-airline', 'git@github.com:bling/vim-airline.git')
+      install_pathogen_plugin('vim-autoclose', 'git@github.com:Townk/vim-autoclose.git')
+    end
+
+    def install_pathogen_plugin(name, url)
+      bundle_path = File.expand_path(File.join(home_directory, '.vim/bundle'))
+      FileUtils.mkdir_p(bundle_path)
+      FileUtils.chdir(bundle_path) do
+        clone_repo(name: name, url: url)
+      end
+    end
+
+    def chdir_vendor(&block)
+      FileUtils.mkdir_p('vendor')
+      FileUtils.chdir('vendor', &block)
     end
   end
 end
