@@ -18,15 +18,14 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=`which vim`
 export VISUAL=$EDITOR
 
-# Add rbenv to path and initialize on shell start
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # Add sweet, sweet colors to man pages
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'nnoremap <space> <C-F>| nnoremap q :q<cr>| set ft=man ts=8 nomod nolist nonu noma' -\""
 
-# Prefer local binaries over system
-export PATH=/usr/local/bin:$PATH
+# Alright Tim Pope, I'll listen to you. Moved from /etc/zshenv
+# system-wide environment settings for zsh(1)
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
 
 # Load custom configuration
 source ~/.zshrc.local

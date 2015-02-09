@@ -51,7 +51,6 @@ module Application
       install_pathogen_plugin('vim-rspec', 'git@github.com:thoughtbot/vim-rspec.git')
       install_pathogen_plugin('surround.vim', 'git@github.com:tpope/vim-surround.git')
       install_pathogen_plugin('syntastic', 'git@github.com:scrooloose/syntastic.git')
-      install_pathogen_plugin('dispatch.vim', 'git@github.com:tpope/vim-dispatch.git')
       install_pathogen_plugin('vim-airline', 'git@github.com:bling/vim-airline.git')
       install_pathogen_plugin('vim-autoclose', 'git@github.com:Townk/vim-autoclose.git')
       install_pathogen_plugin('vim-gitgutter', 'git@github.com:airblade/vim-gitgutter.git')

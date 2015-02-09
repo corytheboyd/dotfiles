@@ -6,6 +6,7 @@ module Application
       FileUtils.chdir(base_directory) do
         install_plugins
         install_zshrc
+        install_zshenv
         install_zshrc_local
         install_customizations
       end
@@ -16,6 +17,12 @@ module Application
     def install_zshrc
       source = File.expand_path(File.join(base_directory, '.zshrc'))
       target = File.expand_path(File.join(home_directory, '.zshrc'))
+      Link.new(source, target).create
+    end
+
+    def install_zshenv
+      source = File.expand_path(File.join(base_directory, '.zshenv'))
+      target = File.expand_path(File.join(home_directory, '.zshenv'))
       Link.new(source, target).create
     end
 

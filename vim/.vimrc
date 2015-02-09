@@ -95,7 +95,6 @@
   let g:syntastic_check_on_wq = 0
 
 " TEST RUNNING
-  let g:rspec_command = "Dispatch rspec {spec}"
   map <Leader>t :call RunCurrentSpecFile()<CR>
   map <Leader>s :call RunNearestSpec()<CR>
   map <Leader>l :call RunLastSpec()<CR>
