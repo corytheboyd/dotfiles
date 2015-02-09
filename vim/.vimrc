@@ -70,8 +70,8 @@
   set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/log/*,*vendor/* 
 
 " SEARCH
-	set incsearch " Search as characters are entered
-	set hlsearch  " Highlight search matches
+  set incsearch " Search as characters are entered
+  set hlsearch  " Highlight search matches
 
 " SPLIT
   " Open new split panes to right and bottom, which feels more natural than Vim’s default
@@ -79,21 +79,25 @@
   set splitright
 
 " VISUAL
-	colorscheme tomorrow-night " Set the color scheme
+  colorscheme tomorrow-night " Set the color scheme
   syntax enable              " Enable syntax processing
 
-	set number      " Show line numbers
-	set cursorline  " Highlight the current line
-	set showmatch   " Highlight matching characters, i.e. [{}]
+  set number      " Show line numbers
+  set cursorline  " Highlight the current line
+  set showmatch   " Highlight matching characters, i.e. [{}]
 
-" WHITESPACE
-	" http://tedlogan.com/techblog3.html
-	set shiftwidth=2  " How many columns text is indented with the reindent operations (<< and >>) and automatic C-style indentation
-	set tabstop=2     " How many columns a tab counts for
-	set softtabstop=2 " How many columns vim uses when you hit Tab in insert mode
-	set expandtab     " Tab in insert mode will produce the appropriate number of spaces
+  " Show all whitespace
+  set list
+  set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+" WHITESPACE 
+  " http://tedlogan.com/techblog3.html
+  set shiftwidth=2  " How many columns text is indented with the reindent operations (<< and >>) and automatic C-style indentation
+  set tabstop=2     " How many columns a tab counts for
+  set softtabstop=2 " How many columns vim uses when you hit Tab in insert mode
+  set expandtab     " Tab in insert mode will produce the appropriate number of spaces
   set autoindent
 
-	" File based indentation
+  " File based indentation
   " Indentation files are loaded from ~/.vim/indent/python.vim
-	filetype indent on
+  filetype indent on
