@@ -45,6 +45,7 @@ module Application
       install_pathogen_plugin('fugitive.vim', 'git@github.com:tpope/vim-fugitive.git')
       install_pathogen_plugin('gundo.vim', 'git@github.com:sjl/gundo.vim.git')
       install_pathogen_plugin('matchit', 'git@github.com:tmhedberg/matchit.git')
+      install_pathogen_plugin('neocomplcache.vim', 'git@github.com:Shougo/neocomplcache.vim.git')
       install_pathogen_plugin('nerdtree', 'git@github.com:scrooloose/nerdtree.git')
       install_pathogen_plugin('vim-rspec', 'git@github.com:thoughtbot/vim-rspec.git')
       install_pathogen_plugin('surround.vim', 'git@github.com:tpope/vim-surround.git')
