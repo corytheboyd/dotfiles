@@ -72,13 +72,43 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+
+# just shell completion
+# https://just.systems/man/en/shell-completion-scripts.html
+eval "$(brew shellenv)"
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# https://junegunn.github.io/fzf/shell-integration
+source <(fzf --zsh)
+
+# https://junegunn.github.io/fzf/shell-integration/#key-bindings
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# starship
+# https://starship.rs/guide/#step-2-set-up-your-shell-to-use-starship
 eval "$(starship init zsh)"
 
+# chezmoi shell completion
+# https://www.chezmoi.io/reference/templates/functions/completion/
+eval "$(chezmoi completion zsh)"
+
 export EDITOR="$(which nvim)"
+
+# bitwarden ssh agent
+{{ if eq .chezmoi.os "darwin" }}
+# darwin
+{{ else if eq .chezmoi.os "linux" }}
+# linux
+{{ else }}
+# other operating system
+{{ end }}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
