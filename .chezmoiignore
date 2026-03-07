@@ -1,4 +1,4 @@
 {{- if ne .chezmoi.os "darwin" }}
-{{ .chezmoi.homeDir }}/.local/share/alfred
+{{ .chezmoi.homeDir }}/.local/config/alfred
 {{ .chezmoi.homeDir }}/Library
 {{- end }}
