@@ -88,3 +88,10 @@ function chezmoi_corytheboyd_install_desktop() {
 			zoom
 	fi
 }
+
+function chezmoi_corytheboyd() {
+	typeset +f |
+		grep -E '^chezmoi_corytheboyd_' |
+		fzf --border rounded --height 40% |
+		read cmd && $cmd
+}
