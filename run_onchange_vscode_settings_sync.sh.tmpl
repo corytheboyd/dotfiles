@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-# settings.json hash: {{ include (joinPath .chezmoi.homeDir ".config/VSCodium/User/settings.json") | sha256sum }}
-
-chezmoi re-add "{{ .chezmoi.homeDir }}/.config/VSCodium/User/settings.json"
