@@ -33,6 +33,6 @@ if ! has_program brew; then
 	install_brew
 fi
 
-if ! has_has_directory "#{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
+if ! has_directory "#{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
 	install_omz
 fi
