@@ -4,6 +4,5 @@
 @sync: sync_vscodium_settings
 
 @update: sync
-    #!/usr/bin/env bash
     cat banner.txt
     chezmoi update
