@@ -95,10 +95,10 @@ source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 	eval "$(brew shellenv)"
 	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 }
-#{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
+#{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }}
 # archlinux
 ####{{- else }}
-# ot
+# other
 #{{- end }}
 
 # shellcheck disable=SC1091,SC2086
@@ -127,6 +127,19 @@ eval "$(starship init zsh)"
 # chezmoi shell completion
 # https://www.chezmoi.io/reference/templates/functions/completion/
 eval "$(chezmoi completion zsh)"
+
+# oh-my-zsh syntax highlighting
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+#{{- if eq .chezmoi.os "darwin" }}
+# shellcheck disable=SC1091
+source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }}
+# shellcheck disable=SC1091
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# archlinux
+####{{- else }}
+# other
+#{{- end }}
 
 # bitwarden ssh agent
 # https://bitwarden.com/help/ssh-agent
