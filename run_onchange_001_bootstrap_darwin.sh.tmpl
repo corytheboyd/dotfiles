@@ -11,16 +11,6 @@ if ! os_is_darwin; then
 	exit 0
 fi
 
-function has_program() {
-	local program=$1
-	command -v "$program" &>/dev/null
-}
-
-function has_directory() {
-	local directory=$1
-	[[ -d "$directory" ]]
-}
-
 function install_brew() {
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }

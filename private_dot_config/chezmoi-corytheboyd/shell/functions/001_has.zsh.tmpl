@@ -1,0 +1,12 @@
+# shellcheck shell=bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+
+function has_program() {
+	local program=$1
+	command -v "$program" &>/dev/null
+}
+
+function has_directory() {
+	local directory=$1
+	[[ -d "$directory" ]]
+}
