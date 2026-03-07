@@ -1,3 +1,5 @@
+# chezmoi:template:left-delimiter="#### {{" right-delimiter=}}
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -70,6 +72,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# shellcheck disable=SC2034
 plugins=(git)
 
 ###############################################################################
@@ -79,28 +82,35 @@ plugins=(git)
 # just shell completion
 # https://just.systems/man/en/shell-completion-scripts.html
 # note: runs before oh-my-zsh init
-{{ if eq .chezmoi.os "darwin" }}
-eval "$(brew shellenv)"
-fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
-{{ else if eq .chezmoi.os "linux" }}
-{{ if eq .chezmoi.osRelease.id "arch" }}
+#### {{ if eq .chezmoi.os "darwin" }}
+# shellcheck disable=SC2206
+{
+	eval "$(brew shellenv)"
+	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+}
+#### {{ else if eq .chezmoi.os "linux" }}
+######## {{ if eq .chezmoi.osRelease.id "arch" }}
 # arch linux
-{{ else }}
+######## {{ else }}
 # other linux
-{{ end }}
-{{ else }}
+######## {{ end }}
+#### {{ else }}
 # other
-{{ end }}
+#### {{ end }}
 
+# shellcheck disable=SC1091,SC2086
 source $ZSH/oh-my-zsh.sh
 
 ###############################################################################
 # User configuration
 ###############################################################################
 
+# fzf shell integration
 # https://junegunn.github.io/fzf/shell-integration
+# shellcheck disable=SC1090
 source <(fzf --zsh)
 
+# fzf recursive search ctrl-r
 # https://junegunn.github.io/fzf/shell-integration/#key-bindings
 export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
@@ -115,9 +125,9 @@ eval "$(starship init zsh)"
 # https://www.chezmoi.io/reference/templates/functions/completion/
 eval "$(chezmoi completion zsh)"
 
-export EDITOR="$(which nvim)"
-
 # bitwarden ssh agent
 # https://bitwarden.com/help/ssh-agent
 export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 
+EDITOR="$(which nvim)"
+export EDITOR
