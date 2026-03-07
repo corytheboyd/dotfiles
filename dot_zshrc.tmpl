@@ -95,7 +95,7 @@ source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 	eval "$(brew shellenv)"
 	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 }
-#{{- else if eq .chezmoi.os "linux" && eq .chezmoi.osRelease.id "arch" }}
+#{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
 # archlinux
 ####{{- else }}
 # ot
