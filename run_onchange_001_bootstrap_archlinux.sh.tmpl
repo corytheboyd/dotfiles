@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
+set -ue
+
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
