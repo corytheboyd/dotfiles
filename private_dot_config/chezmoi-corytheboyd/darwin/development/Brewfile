@@ -8,5 +8,3 @@ brew "just"
 brew "just-lsp"
 brew "lazygit"
 brew "neovim"
-
-cask "vscodium"

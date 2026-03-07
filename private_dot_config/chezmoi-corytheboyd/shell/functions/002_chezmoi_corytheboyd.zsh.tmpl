@@ -34,11 +34,11 @@ function chezmoi_corytheboyd_install_system() {
 			starship \
 			tree \
 			wget \
-			zsh
+			zsh \
+			zsh-syntax-highlighting
 
 		yay -Sy --noconfirm --needed \
-			jless \
-			ghostty
+			jless
 	fi
 }
 
@@ -54,8 +54,7 @@ function chezmoi_corytheboyd_install_development() {
 		shfmt
 
 	yay -Sy --noconfirm --needed \
-		just-lsp \
-		vscodium
+		just-lsp
 }
 
 function chezmoi_corytheboyd_install_desktop() {
@@ -79,11 +78,13 @@ function chezmoi_corytheboyd_install_desktop() {
 		yay -Sy --noconfirm --needed \
 			bitwarden \
 			bitwarden-cli \
+			ghostty \
 			google-chrome \
 			jetbrains-toolbox \
 			mullvad-vpn \
 			obsidian \
 			signal-desktop \
+			vscodium \
 			zen-browser \
 			zoom
 	fi
