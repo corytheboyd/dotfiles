@@ -16,10 +16,7 @@ if ! os_is_darwin; then
 	exit 0
 fi
 
-log_debug "Bootstrapping darwin..."
+log_info "Bootstrapping darwin..."
 
-log_debug "Installing oh-my-zsh..."
+log_info "Installing oh-my-zsh..."
 install_omz
-
-log_debug "Installing homebrew bundle..."
-install_brew
