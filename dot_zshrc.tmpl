@@ -95,14 +95,10 @@ source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 	eval "$(brew shellenv)"
 	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 }
-#{{- else if eq .chezmoi.os "linux" }}
-####{{- if eq .chezmoi.osRelease.id "arch" }}
+#{{- else if eq .chezmoi.os "linux" && eq .chezmoi.osRelease.id "arch" }}
 # archlinux
 ####{{- else }}
-# linux other
-####{{- end }}
-#{{- else }}
-# other
+# ot
 #{{- end }}
 
 # shellcheck disable=SC1091,SC2086

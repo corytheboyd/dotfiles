@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+# pkglist.txt hash: {{ include (joinPath .chezmoi.homeDir ".config/chezmoi-corytheboyd/archlinux/pkglist.txt") | sha256sum }}
+
+set -euo pipefail
+
+# shellcheck disable=SC1091
+source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+
+if ! os_is_archlinux; then
+	exit 0
+fi
+
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/archlinux/bootstrap.sh"

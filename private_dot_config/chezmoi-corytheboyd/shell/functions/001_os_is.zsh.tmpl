@@ -6,3 +6,11 @@ function os_is_darwin() {
 	os="$(chezmoi data --format=json | jq -r '.chezmoi.os')"
 	[[ "$os" == "darwin" ]]
 }
+
+function os_is_archlinux() {
+	local os
+	os="$(chezmoi data --format=json | jq -r '.chezmoi.os')"
+	local release
+	release="$(chezmoi data --format=json | jq -r '.chezmoi.osRelease.id')"
+	[[ "$os" == "linux" && "$release" == "arch" ]]
+}

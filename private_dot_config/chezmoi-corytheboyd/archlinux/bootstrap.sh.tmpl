@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+function has_program() {
+	local program=$1
+	command -v "$program" &>/dev/null
+}
+
+function install_omz() {
+	if has_program omz; then
+		return 0
+	fi
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+install_omz
