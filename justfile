@@ -5,4 +5,4 @@
 
 @update: sync
     cat banner.txt
-    chezmoi update
+    #chezmoi update
