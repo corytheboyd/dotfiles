@@ -1,0 +1,4 @@
+services:
+  archlinux:
+    image: lopsided/archlinux:latest
+    init: true
