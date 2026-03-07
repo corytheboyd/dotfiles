@@ -11,7 +11,7 @@ function os_is_darwin() {
 }
 
 function os_is_archlinux() {
-	#{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
+	#{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }}
 	return 0
 	#{{- else }}
 	# shellcheck disable=SC2317

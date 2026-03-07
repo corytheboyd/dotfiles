@@ -1,14 +1,12 @@
 services:
   archlinux:
-    image: lopsided/archlinux:latest
-    init: true
+    build: archlinux
+    platform: linux/arm64
     volumes:
-      - ../:/chezmoi-corytheboyd:ro
-    entrypoint:
-      - /bin/sh
-      - -c
-      - |
-        pacman -Sy --noconfirm chezmoi
-        cp -r /chezmoi-corytheboyd /tmp/chezmoi-src
-        chezmoi init --one-shot --source /tmp/chezmoi-src
-        /bin/bash
+      - ../:/chezmoi-source:ro
+      - pacman-cache:/var/cache/pacman/pkg
+      - yay-cache:/home/robertpaulson/.cache/yay
+
+volumes:
+  pacman-cache:
+  yay-cache:

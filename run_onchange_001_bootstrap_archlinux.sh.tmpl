@@ -2,17 +2,99 @@
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
 set -euo pipefail
+set -v
 
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+
+export LOG_LEVEL=debug
+
 if ! os_is_archlinux; then
+	log_debug "Not archlinux, skipping"
 	exit 0
 fi
 
-# shellcheck disable=SC1091
-source "$(chezmoi_corytheboyd_path)/shell/lib/bootstrap.sh"
+log_info "Bootstrapping archlinux..."
 
-function install_omz() {
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+function install_system_packages() {
+	sudo pacman -S --noconfirm --needed \
+		7zip \
+		chezmoi \
+		curl \
+		direnv \
+		docker \
+		docker-buildx \
+		docker-compose \
+		fzf \
+		git \
+		htop \
+		jq \
+		just \
+		lazygit \
+		neovim \
+		ripgrep \
+		shfmt \
+		starship \
+		tailscale \
+		tree \
+		wget \
+		zsh \
+		audacity \
+		firefox \
+		transmission-gtk \
+		vlc
 }
+
+function install_yay() {
+	if has_program yay; then
+		return 0
+	fi
+	(
+		sudo pacman -Sy --noconfirm --needed git base-devel
+		sudo pacman -Rns --noconfirm rust 2>/dev/null || true # SUS AF
+		git clone https://aur.archlinux.org/yay-bin.git
+		cd yay-bin
+		makepkg -si --noconfirm
+	)
+}
+
+function install_aur_packages() {
+	yay -Sy --noconfirm --needed \
+		bitwarden \
+		bitwarden-cli \
+		jless \
+		just-lsp \
+		ghostty \
+		google-chrome \
+		jetbrains-toolbox \
+		mullvad-vpn \
+		obsidian \
+		signal-desktop \
+		vscodium \
+		zen-browser \
+		zoom
+}
+
+# update system first
+log_info "Updating system dependencies..."
+sudo pacman -Syu --noconfirm
+
+log_info "Installing system packages..."
+install_system_packages
+
+log_info "Installing yay..."
+install_yay
+
+log_info "Installing AUR packages..."
+install_aur_packages
+
+log_info "Set default shell to ZSH"
+chsh -s "$(command -v zsh)"
+
+log_info "Installing oh-my-zsh..."
+install_omz

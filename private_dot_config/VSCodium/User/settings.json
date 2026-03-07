@@ -18,5 +18,11 @@
   "update.mode": "none",
   "workbench.colorTheme": "Default Dark+",
   "workbench.tree.indent": 14,
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
 }

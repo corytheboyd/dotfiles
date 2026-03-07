@@ -1,0 +1,55 @@
+# shellcheck shell=bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+
+# LOG_LEVEL: debug, info, warn, error (default: info)
+
+_LOG_COLOR_RESET="\033[0m"
+_LOG_COLOR_DEBUG="\033[0;35m"   # magenta
+_LOG_COLOR_INFO="\033[0;34m"    # blue
+_LOG_COLOR_WARN="\033[0;33m"    # yellow
+_LOG_COLOR_ERROR="\033[0;31m"   # red
+_LOG_COLOR_DIM="\033[2m"        # dim (for timestamp)
+
+function _log_level_value() {
+	case "${1,,}" in
+		debug) echo 0 ;;
+		info)  echo 1 ;;
+		warn)  echo 2 ;;
+		error) echo 3 ;;
+		*)     echo 1 ;;
+	esac
+}
+
+function _log_enabled() {
+	local level=$1
+	[[ $(_log_level_value "$level") -ge $(_log_level_value "${LOG_LEVEL:-INFO}") ]]
+}
+
+function _log_print() {
+	local level=$1 color=$2 stream=$3
+	shift 3
+	local timestamp
+	timestamp=$(date +"%Y-%m-%dT%H:%M:%S")
+	local msg="${_LOG_COLOR_DIM}${timestamp}${_LOG_COLOR_RESET} ${color}$(printf '%-5s' "${level^^}")${_LOG_COLOR_RESET} $*"
+	if [[ "$stream" == "stderr" ]]; then
+		echo -e "$msg" >&2
+	else
+		echo -e "$msg"
+	fi
+}
+
+function log_debug() {
+	_log_enabled debug && _log_print debug "$_LOG_COLOR_DEBUG" stdout "$@"
+}
+
+function log_info() {
+	_log_enabled info && _log_print info "$_LOG_COLOR_INFO" stdout "$@"
+}
+
+function log_warn() {
+	_log_enabled warn && _log_print warn "$_LOG_COLOR_WARN" stderr "$@"
+}
+
+function log_error() {
+	_log_enabled error && _log_print error "$_LOG_COLOR_ERROR" stderr "$@"
+}

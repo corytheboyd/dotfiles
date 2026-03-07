@@ -19,6 +19,7 @@ starship
 tailscale
 tree
 wget
+zsh
 
 # CLI tools (AUR)
 bitwarden-cli
