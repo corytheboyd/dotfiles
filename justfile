@@ -3,5 +3,5 @@
 
 @sync: sync_vscodium_settings
 
-@apply: sync
+@update: sync
     chezmoi update

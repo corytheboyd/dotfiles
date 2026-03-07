@@ -1,6 +1,6 @@
 # shellcheck disable=SC2148
 # use custom chezmoi delimiters that are shell script syntax compatible
-# chezmoi:template:left-delimiter="#### {{" right-delimiter=}}
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -82,30 +82,34 @@ plugins=(git)
 # oh-my-zsh init
 ###############################################################################
 
+# load custom shell before all
+# shellcheck disable=SC1091
+source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+
 # just shell completion
 # https://just.systems/man/en/shell-completion-scripts.html
 # note: runs before oh-my-zsh init
-#### {{- if eq .chezmoi.os "darwin" }}
+#{{- if eq .chezmoi.os "darwin" }}
 # shellcheck disable=SC2206
 {
 	eval "$(brew shellenv)"
 	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 }
-#### {{- else if eq .chezmoi.os "linux" }}
-######## {{- if eq .chezmoi.osRelease.id "arch" }}
+#{{- else if eq .chezmoi.os "linux" }}
+####{{- if eq .chezmoi.osRelease.id "arch" }}
 # archlinux
-######## {{- else }}
+####{{- else }}
 # linux other
-######## {{- end }}
-#### {{- else }}
+####{{- end }}
+#{{- else }}
 # other
-#### {{- end }}
+#{{- end }}
 
 # shellcheck disable=SC1091,SC2086
 source $ZSH/oh-my-zsh.sh
 
 ###############################################################################
-# User configuration
+# user configuration
 ###############################################################################
 
 # fzf shell integration

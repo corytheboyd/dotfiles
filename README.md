@@ -29,8 +29,7 @@ For that, added a `sync` command to `justfile`.
 Override default template delimiters in shell scripts so that we can execute shellcheck against them.
 
 ```shell
-# use custom chezmoi delimiters that are shell script syntax compatible
-# chezmoi:template:left-delimiter="#### {{" right-delimiter=}}
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 ```
 
 <https://www.chezmoi.io/reference/templates/directives/#delimiters>

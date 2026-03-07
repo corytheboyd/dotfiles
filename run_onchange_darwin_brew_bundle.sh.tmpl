@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+# Brewfile hash: {{ include (joinPath .chezmoi.homeDir ".config/chezmoi-corytheboyd/Brewfile") | sha256sum }}
+
 set -euo pipefail
 
-# use custom chezmoi delimiters that are shell script syntax compatible
-# chezmoi:template:left-delimiter="#### {{" right-delimiter=}}
-
-# Brewfile hash: {{ include (joinPath .chezmoi.homeDir ".config/chezmoi-dotfiles-corytheboyd/Brewfile") | sha256sum }}
-
-cd "$HOME/.config/chezmoi-dotfiles-corytheboyd"
+cd "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd"
 brew bundle

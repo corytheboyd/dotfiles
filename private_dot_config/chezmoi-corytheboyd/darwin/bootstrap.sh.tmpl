@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 # use custom chezmoi delimiters that are shell script syntax compatible
-# chezmoi:template:left-delimiter="#### {{" right-delimiter=}}
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
 function os_is_darwin() {
 	local os

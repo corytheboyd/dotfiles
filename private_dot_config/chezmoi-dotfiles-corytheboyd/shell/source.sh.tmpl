@@ -1,6 +1,0 @@
-# shellcheck shell=bash
-
-for f in $(find "{{ .chezmoi.homeDir }}/.config/chezmoi-dotfiles-corytheboyd/shell/functions" -name "*.zsh" | sort); do
-	# shellcheck disable=SC1090
-	source "$f"
-done

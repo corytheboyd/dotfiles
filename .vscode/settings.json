@@ -1,10 +1,10 @@
 {
     "files.associations": {
-        "*sh.tmpl": "shellscript",
-        "*gitignore": "ignore",
-        "*zshrc.tmpl": "shellscript",
-        "*gitconfig.tmpl": "properties",
+        "*.{sh,zsh}.tmpl": "shellscript",
+        "*_gitignore": "ignore",
+        "*_zshrc.tmpl": "shellscript",
+        "*_gitconfig.tmpl": "properties",
         ".chezmoiignore": "ignore",
-        "*.json.tmpl": "json"
+        "*.{json}.tmpl": "json"
     }
 }

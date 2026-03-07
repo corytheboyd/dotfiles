@@ -1,0 +1,8 @@
+# shellcheck shell=bash
+
+# source all functions.
+# prefix files with "001_" etc. to load in specific order.
+for f in $(find "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell/functions" -name "*.zsh" | sort); do
+	# shellcheck disable=SC1090
+	source "$f"
+done
