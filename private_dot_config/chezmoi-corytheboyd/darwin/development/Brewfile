@@ -1,0 +1,12 @@
+brew "colima"
+brew "direnv"
+brew "docker"
+brew "docker-buildx"
+brew "docker-compose"
+brew "docker-credential-helper"
+brew "just"
+brew "just-lsp"
+brew "lazygit"
+brew "neovim"
+
+cask "vscodium"

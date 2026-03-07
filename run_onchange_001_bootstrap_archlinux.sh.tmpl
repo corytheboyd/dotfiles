@@ -16,30 +16,6 @@ fi
 
 log_info "Bootstrapping archlinux..."
 
-function install_system_packages() {
-	sudo pacman -S --noconfirm --needed \
-		7zip \
-		chezmoi \
-		curl \
-		direnv \
-		docker \
-		docker-buildx \
-		docker-compose \
-		fzf \
-		git \
-		htop \
-		jq \
-		just \
-		lazygit \
-		neovim \
-		ripgrep \
-		shfmt \
-		starship \
-		tree \
-		wget \
-		zsh
-}
-
 function install_yay() {
 	if has_program yay; then
 		return 0
@@ -53,26 +29,15 @@ function install_yay() {
 	)
 }
 
-function install_aur_packages() {
-	yay -Sy --noconfirm --needed \
-		jless \
-		just-lsp \
-		ghostty \
-		vscodium
-}
-
 # update system first
 log_info "Updating system dependencies..."
 sudo pacman -Syu --noconfirm
 
-log_info "Installing system packages..."
-install_system_packages
-
 log_info "Installing yay..."
 install_yay
 
-log_info "Installing AUR packages..."
-install_aur_packages
+log_info "Installing system packages..."
+chezmoi_corytheboyd_install_system
 
 log_info "Set default shell to ZSH"
 chsh -s "$(command -v zsh)"

@@ -20,7 +20,7 @@
   "workbench.tree.indent": 14,
   "explorer.confirmDragAndDrop": false,
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "mkhl.shfmt"
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
