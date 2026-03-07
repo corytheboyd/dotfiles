@@ -6,4 +6,4 @@
 @update: sync
     #!/usr/bin/env bash
     cat banner.txt
-    chezmoi update
+    #chezmoi update
