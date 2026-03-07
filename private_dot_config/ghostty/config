@@ -8,7 +8,6 @@ confirm-close-surface = false
 
 copy-on-select = clipboard
 
-theme = Gruvbox Dark
 
 # Clear screen
 keybind = super+k=clear_screen
