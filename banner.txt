@@ -9,3 +9,11 @@
 │ |___ |__| |  \   |    |  |  | |___ |__] |__|   |   |__/ │
 │                                                         │
 ╚─────────────────────────────────────────────────────────╝
+|
+| See available commands:
+|   chezmoi_corytheboyd
+|
+| Update:
+|   chezmoi_corytheboyd_update
+|
+| Happy hacking!
