@@ -13,19 +13,3 @@ fi
 
 cd "$(chezmoi_corytheboyd_path)/darwin"
 brew bundle
-
-#{{- if eq .chezmoi.os "darwin" }}
-# shellcheck disable=SC2206
-{
-	eval "$(brew shellenv)"
-	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
-}
-#{{- else if eq .chezmoi.os "linux" }}
-####{{- if eq .chezmoi.osRelease.id "arch" }}
-# archlinux
-####{{- else }}
-# linux other
-####{{- end }}
-#{{- else }}
-# other
-#{{- end }}
