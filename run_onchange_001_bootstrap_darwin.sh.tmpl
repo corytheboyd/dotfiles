@@ -21,7 +21,4 @@ log_info "Bootstrapping darwin..."
 log_info "Installing oh-my-zsh..."
 install_omz
 
-(
-	cd "$(chezmoi_corytheboyd_path)/darwin/system"
-	brew bundle
-)
+chezmoi_corytheboyd_install_system
