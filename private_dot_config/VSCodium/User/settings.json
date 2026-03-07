@@ -18,5 +18,6 @@
   "update.mode": "none",
   "workbench.colorTheme": "Default Dark+",
   "workbench.tree.indent": 24,
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "FOO": "bar"
 }
