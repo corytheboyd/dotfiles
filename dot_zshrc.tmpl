@@ -80,20 +80,22 @@ plugins=(git)
 # https://just.systems/man/en/shell-completion-scripts.html
 # note: runs before oh-my-zsh init
 {{ if eq .chezmoi.os "darwin" }}
-  eval "$(brew shellenv)"
-  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+eval "$(brew shellenv)"
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 {{ else if eq .chezmoi.os "linux" }}
-  {{ if eq .chezmoi.osRelease.id "arch" }}
-    eval "$(brew shellenv)"
-    fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
-  {{ end }}
+{{ if eq .chezmoi.osRelease.id "arch" }}
+# arch linux
 {{ else }}
+# other linux
+{{ end }}
+{{ else }}
+# other
 {{ end }}
 
 source $ZSH/oh-my-zsh.sh
 
 ###############################################################################
-# user init
+# User configuration
 ###############################################################################
 
 # https://junegunn.github.io/fzf/shell-integration
@@ -112,10 +114,6 @@ eval "$(starship init zsh)"
 # chezmoi shell completion
 # https://www.chezmoi.io/reference/templates/functions/completion/
 eval "$(chezmoi completion zsh)"
-
-###############################################################################
-# user exports
-###############################################################################
 
 export EDITOR="$(which nvim)"
 
