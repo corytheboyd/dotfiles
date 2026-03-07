@@ -11,10 +11,7 @@ source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
 
-if ! os_is_archlinux; then
-	log_debug "Not archlinux, skipping"
-	exit 0
-fi
+os_is_archlinux || { log_debug "Not archlinux, skipping"; exit 0; }
 
 log_info "Bootstrapping archlinux..."
 
