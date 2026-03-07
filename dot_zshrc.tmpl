@@ -134,7 +134,8 @@ eval "$(chezmoi completion zsh)"
 # shellcheck disable=SC1091
 source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }}
-soruce /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# shellcheck disable=SC1091
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # archlinux
 ####{{- else }}
 # other
