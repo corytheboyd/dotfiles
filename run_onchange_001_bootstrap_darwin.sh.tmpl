@@ -24,10 +24,10 @@ function install_omz() {
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
-if has_program brew; then
+if ! has_program brew; then
 	install_brew
 fi
 
-if has_program omz; then
+if ! has_program omz; then
 	install_omz
 fi
