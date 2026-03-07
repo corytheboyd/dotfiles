@@ -4,4 +4,5 @@
 @sync: sync_vscodium_settings
 
 @update: sync
+    cat banner.txt
     chezmoi update
