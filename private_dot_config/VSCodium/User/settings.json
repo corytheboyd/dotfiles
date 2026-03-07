@@ -1,0 +1,22 @@
+{
+  "[just]": {
+    "editor.defaultFormatter": "nefrob.vscode-just-syntax"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+  },
+  "editor.fontFamily": "'JetBrains Mono', monospace",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 4,
+  "explorer.compactFolders": false,
+  "extensions.autoCheckUpdates": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "update.mode": "none",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.tree.indent": 24,
+  "explorer.confirmDragAndDrop": false
+}
