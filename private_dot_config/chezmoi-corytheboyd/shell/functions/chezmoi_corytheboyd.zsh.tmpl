@@ -5,7 +5,7 @@ function chezmoi_corytheboyd_path() {
 	echo "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd"
 }
 
-function chezmoi_dotfiles_corytheboyd_update() {
+function chezmoi_corytheboyd_update() {
 	(
 		cd "$(chezmoi_corytheboyd_path)" || return
 		just update
