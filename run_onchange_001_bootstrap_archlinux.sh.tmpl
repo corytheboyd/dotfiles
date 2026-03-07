@@ -35,14 +35,9 @@ function install_system_packages() {
 		ripgrep \
 		shfmt \
 		starship \
-		tailscale \
 		tree \
 		wget \
-		zsh \
-		audacity \
-		firefox \
-		transmission-gtk \
-		vlc
+		zsh
 }
 
 function install_yay() {
@@ -60,19 +55,10 @@ function install_yay() {
 
 function install_aur_packages() {
 	yay -Sy --noconfirm --needed \
-		bitwarden \
-		bitwarden-cli \
 		jless \
 		just-lsp \
 		ghostty \
-		google-chrome \
-		jetbrains-toolbox \
-		mullvad-vpn \
-		obsidian \
-		signal-desktop \
-		vscodium \
-		zen-browser \
-		zoom
+		vscodium
 }
 
 # update system first

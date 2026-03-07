@@ -11,3 +11,33 @@ function chezmoi_corytheboyd_update() {
 		just update
 	)
 }
+
+function chezmoi_corytheboyd_install_personal_packages() {
+	if os_is_darwin; then
+		(
+			# shellcheck disable=SC2164
+			cd "$(chezmoi_corytheboyd_path)/darwin/personal"
+			brew bundle
+		)
+	fi
+
+	if os_is_archlinux; then
+		sudo pacman -S --noconfirm --needed \
+			tailscale \
+			audacity \
+			firefox \
+			transmission-gtk \
+			vlc
+
+		yay -Sy --noconfirm --needed \
+			bitwarden \
+			bitwarden-cli \
+			google-chrome \
+			jetbrains-toolbox \
+			mullvad-vpn \
+			obsidian \
+			signal-desktop \
+			zen-browser \
+			zoom
+	fi
+}
