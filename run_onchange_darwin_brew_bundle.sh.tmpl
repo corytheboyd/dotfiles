@@ -4,5 +4,5 @@
 
 set -euo pipefail
 
-cd "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/darwin"
+cd "$(chezmoi_corytheboyd_path)/darwin"
 brew bundle
