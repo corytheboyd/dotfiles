@@ -11,5 +11,11 @@ if ! os_is_darwin; then
 	exit 0
 fi
 
-cd "$(chezmoi_corytheboyd_path)/darwin"
-brew bundle
+function brew_bundle() {
+	(
+		cd "$(chezmoi_corytheboyd_path)/darwin"
+		brew bundle
+	)
+}
+
+brew_bundle

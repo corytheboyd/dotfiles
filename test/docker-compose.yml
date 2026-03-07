@@ -9,4 +9,6 @@ services:
       - -c
       - |
         pacman -Sy --noconfirm chezmoi
-        chezmoi init --one-shot --source /chezmoi-corytheboyd
+        cp -r /chezmoi-corytheboyd /tmp/chezmoi-src
+        chezmoi init --one-shot --source /tmp/chezmoi-src
+        /bin/bash

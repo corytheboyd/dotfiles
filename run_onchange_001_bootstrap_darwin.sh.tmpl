@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
-# pkglist.txt hash: {{ include (joinPath .chezmoi.homeDir ".config/chezmoi-corytheboyd/archlinux/pkglist.txt") | sha256sum }}
 
 set -euo pipefail
 
@@ -11,18 +10,8 @@ if ! os_is_darwin; then
 	exit 0
 fi
 
-function install_brew() {
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/shell/lib/bootstrap.sh"
 
-function install_omz() {
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-}
-
-if ! has_program brew; then
-	install_brew
-fi
-
-if ! has_directory "#{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
-	install_omz
-fi
+install_brew
+install_omz

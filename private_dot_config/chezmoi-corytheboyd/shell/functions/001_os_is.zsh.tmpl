@@ -2,15 +2,19 @@
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
 function os_is_darwin() {
-	local os
-	os="$(chezmoi data --format=json | jq -r '.chezmoi.os')"
-	[[ "$os" == "darwin" ]]
+	#{{- if and (eq .chezmoi.os "darwin") }}
+	return 0
+	#{{- else }}
+	# shellcheck disable=SC2317
+	return 1
+	#{{- end }}
 }
 
 function os_is_archlinux() {
-	local os
-	os="$(chezmoi data --format=json | jq -r '.chezmoi.os')"
-	local release
-	release="$(chezmoi data --format=json | jq -r '.chezmoi.osRelease.id')"
-	[[ "$os" == "linux" && "$release" == "arch" ]]
+	#{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
+	return 0
+	#{{- else }}
+	# shellcheck disable=SC2317
+	return 1
+	#{{- end }}
 }
