@@ -7,7 +7,7 @@ function chezmoi_corytheboyd_path() {
 
 function chezmoi_corytheboyd_update() {
 	(
-		cd "$(chezmoi_corytheboyd_path)" || return
+		cd "$(chezmoi_corytheboyd_path)" || return 1
 		just update
 	)
 }
@@ -29,6 +29,7 @@ function chezmoi_corytheboyd_install_system() {
 			fzf \
 			git \
 			htop \
+			just \
 			jq \
 			ripgrep \
 			starship \
@@ -48,7 +49,6 @@ function chezmoi_corytheboyd_install_development() {
 		docker \
 		docker-buildx \
 		docker-compose \
-		just \
 		lazygit \
 		neovim \
 		shfmt

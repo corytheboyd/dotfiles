@@ -39,7 +39,7 @@ log_info "Installing system packages..."
 chezmoi_corytheboyd_install_system
 
 log_info "Set default shell to ZSH"
-chsh -s "$(command -v zsh)"
+sudo chsh -s "$(command -v zsh)"
 
 log_info "Installing oh-my-zsh..."
 install_omz
