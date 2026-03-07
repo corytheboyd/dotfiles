@@ -2,3 +2,11 @@ services:
   archlinux:
     image: lopsided/archlinux:latest
     init: true
+    volumes:
+      - ../:/chezmoi-corytheboyd:ro
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        pacman -Sy --noconfirm chezmoi
+        chezmoi init --one-shot --source /chezmoi-corytheboyd

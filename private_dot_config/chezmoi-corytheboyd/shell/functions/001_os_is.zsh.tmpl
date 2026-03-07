@@ -1,0 +1,8 @@
+# shellcheck shell=bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+
+function os_is_darwin() {
+	local os
+	os="$(chezmoi data --format=json | jq -r '.chezmoi.os')"
+	[[ "$os" == "darwin" ]]
+}

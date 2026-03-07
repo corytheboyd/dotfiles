@@ -4,5 +4,28 @@
 
 set -euo pipefail
 
-cd "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/darwin"
+# shellcheck disable=SC1091
+source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+
+if ! os_is_darwin; then
+	exit 0
+fi
+
+cd "$(chezmoi_corytheboyd_path)/darwin"
 brew bundle
+
+#{{- if eq .chezmoi.os "darwin" }}
+# shellcheck disable=SC2206
+{
+	eval "$(brew shellenv)"
+	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+}
+#{{- else if eq .chezmoi.os "linux" }}
+####{{- if eq .chezmoi.osRelease.id "arch" }}
+# archlinux
+####{{- else }}
+# linux other
+####{{- end }}
+#{{- else }}
+# other
+#{{- end }}
