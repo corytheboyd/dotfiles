@@ -11,8 +11,6 @@ source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
 
-export LOG_LEVEL=debug
-
 if ! os_is_archlinux; then
 	log_debug "Not archlinux, skipping"
 	exit 0

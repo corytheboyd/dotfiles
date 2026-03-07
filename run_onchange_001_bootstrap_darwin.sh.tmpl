@@ -6,12 +6,20 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+
 if ! os_is_darwin; then
+	log_debug "Not darwin, skipping"
 	exit 0
 fi
 
-# shellcheck disable=SC1091
-source "$(chezmoi_corytheboyd_path)/shell/lib/install.sh"
+log_debug "Bootstrapping darwin..."
 
+log_debug "Installing oh-my-zsh..."
 install_omz
+
+log_debug "Installing homebrew bundle..."
 install_brew
