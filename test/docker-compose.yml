@@ -6,6 +6,8 @@ services:
       - ../:/chezmoi-source:ro
       - pacman-cache:/var/cache/pacman/pkg
       - yay-cache:/home/robertpaulson/.cache/yay
+    environment:
+      - LOG_LEVEL=DEBUG
 
 volumes:
   pacman-cache:
