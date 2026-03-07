@@ -2,13 +2,17 @@
 
 "Pretty good" declarative configuration for computers using `chezmoi`.
 
-## Bootstrap
+First time install:
 
-1. Install [homebrew](https://brew.sh/)
-1. Run `brew bundle`
-1. Run `just bootstrap`
+```shell
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply corytheboyd
+```
 
-From there, it's [`chezmoi`](https://www.chezmoi.io/).
+Once installed, update:
+
+```shell
+chezmoi_corytheboyd_update
+```
 
 ## Manual Steps
 
@@ -17,12 +21,6 @@ From there, it's [`chezmoi`](https://www.chezmoi.io/).
 Set Alfred preferences directory to `~/.local/share/alfred`:
 
 ![Alfred settings](alfred-settings.png)
-
-## Sync
-
-Changes to files managed by chezmoi need to be synced back manually.
-
-For that, added a `sync` command to `justfile`.
 
 ## chezmoi
 
