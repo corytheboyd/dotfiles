@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+# Brewfile desktop hash: {{ include ".config/chezmoi-corytheboyd/darwin/desktop/Brewfile" | sha256sum }}
+# Brewfile development hash: {{ include ".config/chezmoi-corytheboyd/darwin/development/Brewfile" | sha256sum }}
+# Brewfile system hash: {{ include ".config/chezmoi-corytheboyd/darwin/system/Brewfile" | sha256sum }}
 
 set -ue
 
