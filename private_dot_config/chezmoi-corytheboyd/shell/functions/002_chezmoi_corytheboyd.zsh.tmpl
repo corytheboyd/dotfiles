@@ -15,7 +15,7 @@ function chezmoi_corytheboyd_update() {
 function chezmoi_corytheboyd_edit() {
 	(
 		chezmoi cd
-		codium --wait .
+		codium --wait . || return
 		chezmoi_corytheboyd_update
 	)
 }
