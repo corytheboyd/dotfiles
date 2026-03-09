@@ -71,7 +71,7 @@ function chezmoi_corytheboyd_install_desktop() {
 	if os_is_darwin; then
 		(
 			# shellcheck disable=SC2164
-			cd "$(chezmoi_corytheboyd_path)/darwin/personal"
+			cd "$(chezmoi_corytheboyd_path)/darwin/desktop"
 			brew bundle
 		)
 	fi
