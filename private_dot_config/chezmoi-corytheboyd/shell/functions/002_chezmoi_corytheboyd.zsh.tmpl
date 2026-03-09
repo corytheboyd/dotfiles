@@ -14,8 +14,8 @@ function chezmoi_corytheboyd_update() {
 
 function chezmoi_corytheboyd_edit() {
 	(
-		chezmoiz cd
-		${=EDITOR} .
+		chezmoi cd
+		codium --wait .
 		chezmoi_corytheboyd_update
 	)
 }
