@@ -131,6 +131,9 @@ eval "$(starship init zsh)"
 # https://www.chezmoi.io/reference/templates/functions/completion/
 eval "$(chezmoi completion zsh)"
 
+# mise shell integration
+eval "$(mise activate zsh)"
+
 # oh-my-zsh syntax highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #{{- if eq .chezmoi.os "darwin" }}
