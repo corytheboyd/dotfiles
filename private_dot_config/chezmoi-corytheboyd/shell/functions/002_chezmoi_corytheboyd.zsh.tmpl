@@ -44,21 +44,30 @@ function chezmoi_corytheboyd_install_system() {
 }
 
 function chezmoi_corytheboyd_install_development() {
-	sudo pacman -S --noconfirm --needed \
-		direnv \
-		docker \
-		docker-buildx \
-		docker-compose \
-		lazygit \
-		neovim \
-		shfmt
+	if os_is_darwin; then
+		(
+			# shellcheck disable=SC2164
+			cd "$(chezmoi_corytheboyd_path)/darwin/development"
+			brew bundle
+		)
+	fi
 
-	yay -Sy --noconfirm --needed \
-		just-lsp
+	if os_is_archlinux; then
+		sudo pacman -S --noconfirm --needed \
+			direnv \
+			docker \
+			docker-buildx \
+			docker-compose \
+			lazygit \
+			neovim \
+			shfmt
+
+		yay -Sy --noconfirm --needed \
+			just-lsp
+	fi
 }
 
 function chezmoi_corytheboyd_install_desktop() {
-	#wow
 	if os_is_darwin; then
 		(
 			# shellcheck disable=SC2164
