@@ -1,10 +1,8 @@
 brew "colima"
-brew "direnv" # TODO remove, just use mise
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
 brew "docker-credential-helper"
-brew "just-lsp"
 brew "lazygit"
 brew "mise"
 brew "neovim"

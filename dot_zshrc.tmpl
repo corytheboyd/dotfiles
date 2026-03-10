@@ -86,21 +86,6 @@ plugins=(git)
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
-# just shell completion
-# https://just.systems/man/en/shell-completion-scripts.html
-# note: runs before oh-my-zsh init
-#{{- if eq .chezmoi.os "darwin" }}
-# shellcheck disable=SC2206
-{
-	eval "$(brew shellenv)"
-	fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
-}
-#{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }}
-# archlinux
-####{{- else }}
-# other
-#{{- end }}
-
 # shellcheck disable=SC1091,SC2086
 source $ZSH/oh-my-zsh.sh
 

@@ -8,7 +8,7 @@ function chezmoi_corytheboyd_path() {
 function chezmoi_corytheboyd_update() {
 	(
 		cd "$(chezmoi_corytheboyd_path)" || return 1
-		just update
+		mise run update
 	)
 }
 

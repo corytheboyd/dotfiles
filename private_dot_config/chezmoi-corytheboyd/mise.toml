@@ -1,0 +1,9 @@
+[tasks.sync_vscodium_settings]
+run = "chezmoi re-add ~/.config/VSCodium/User/settings.json"
+
+[tasks.sync]
+depends = ["sync_vscodium_settings"]
+
+[tasks.update]
+depends = ["sync"]
+run = ["cat banner.txt", "chezmoi update"]
