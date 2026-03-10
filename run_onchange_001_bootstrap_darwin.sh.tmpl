@@ -4,7 +4,7 @@
 # Brewfile system hash: #{{ include "private_dot_config/chezmoi-corytheboyd/darwin/system/Brewfile" | sha256sum }}
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
-set -ue
+set -e
 
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
@@ -29,4 +29,3 @@ chezmoi_corytheboyd_install_development
 chezmoi_corytheboyd_install_desktop
 
 brew autoupdate start 43200 --upgrade --cleanup --immediate --sudo
-
