@@ -10,5 +10,3 @@ brew "neovim"
 # Ruby
 brew "gmp"
 brew "libyaml"
-
-vscode "editorconfig.editorconfig"
