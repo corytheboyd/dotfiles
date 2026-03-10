@@ -1,0 +1,16 @@
+Host arcade_local
+  User arcade
+  HostName arcade.local
+Host motherbase_local
+  User pliskin
+  HostName motherbase.local
+Host printer
+  User printer
+  HostName printer.local
+Host seriousbusiness
+  User root
+  HostName seriousbusiness.taild3766c.ts.net
+
+Host *
+  IdentityAgent /Users/corytheboyd/.bitwarden-ssh-agent.sock
+
