@@ -4,8 +4,6 @@
 # Brewfile system hash: #{{ include "private_dot_config/chezmoi-corytheboyd/darwin/system/Brewfile" | sha256sum }}
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
-set -e
-
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
