@@ -12,14 +12,6 @@ function chezmoi_corytheboyd_update() {
 	)
 }
 
-function chezmoi_corytheboyd_edit() {
-	(
-		chezmoi cd
-		"$EDITOR" . || return
-		chezmoi_corytheboyd_update
-	)
-}
-
 function chezmoi_corytheboyd_install_system() {
 	if os_is_darwin; then
 		(
