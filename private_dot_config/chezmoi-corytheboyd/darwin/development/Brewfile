@@ -8,3 +8,7 @@ brew "just-lsp"
 brew "lazygit"
 brew "mise"
 brew "neovim"
+
+# Ruby
+brew "gmp"
+brew "libyaml"
