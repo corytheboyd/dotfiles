@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-# Brewfile desktop hash: {{ include "private_dot_config/chezmoi-corytheboyd/darwin/desktop/Brewfile" | sha256sum }}
-# Brewfile development hash: {{ include "private_dot_config/chezmoi-corytheboyd/darwin/development/Brewfile" | sha256sum }}
-# Brewfile system hash: {{ include "private_dot_config/chezmoi-corytheboyd/darwin/system/Brewfile" | sha256sum }}
+# Brewfile global hash: {{ include "private_dot_config/homebrew/Brewfile" | sha256sum }}
 
 # TODO moving to .zshenv should have made this obsolete
 # shellcheck disable=SC1091
-# source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
-
-set -v
+source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
@@ -25,8 +21,5 @@ log_info "Bootstrapping darwin..."
 log_info "Installing oh-my-zsh..."
 install_omz
 
-# chezmoi_corytheboyd_install_system
-# chezmoi_corytheboyd_install_development
-# chezmoi_corytheboyd_install_desktop
-
+log_info "Syncing homebrew packages..."
 brew bundle --global --cleanup --upgrade --zap
