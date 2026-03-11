@@ -85,10 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # user init
 ###############################################################################
 
-# load custom shell before all
-# shellcheck disable=SC1091
-source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
-
 # fzf shell integration
 # https://junegunn.github.io/fzf/shell-integration
 # shellcheck disable=SC1090
@@ -128,12 +124,3 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ###############################################################################
 # user variables
 ###############################################################################
-
-# bitwarden ssh agent
-# https://bitwarden.com/help/ssh-agent
-export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
-
-EDITOR="$(which nvim)"
-export EDITOR
-
-export PATH="$PATH:$HOME/.local/bin"

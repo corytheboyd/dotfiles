@@ -22,24 +22,11 @@ function chezmoi_corytheboyd_install_system() {
 	fi
 
 	if os_is_archlinux; then
-		sudo pacman -S --noconfirm --needed \
-			7zip \
-			chezmoi \
-			curl \
-			fzf \
-			git \
-			htop \
-			just \
-			jq \
-			ripgrep \
-			starship \
-			tree \
-			wget \
-			zsh \
-			zsh-syntax-highlighting
-
-		yay -Sy --noconfirm --needed \
-			jless
+		(
+			# shellcheck disable=SC2164
+			cd "$(chezmoi_corytheboyd_path)/archlinux"
+			bash install_system.sh
+		)
 	fi
 }
 
@@ -53,17 +40,11 @@ function chezmoi_corytheboyd_install_development() {
 	fi
 
 	if os_is_archlinux; then
-		sudo pacman -S --noconfirm --needed \
-			direnv \
-			docker \
-			docker-buildx \
-			docker-compose \
-			lazygit \
-			neovim \
-			shfmt
-
-		yay -Sy --noconfirm --needed \
-			just-lsp
+		(
+			# shellcheck disable=SC2164
+			cd "$(chezmoi_corytheboyd_path)/archlinux"
+			bash install_development.sh
+		)
 	fi
 }
 
@@ -77,25 +58,11 @@ function chezmoi_corytheboyd_install_desktop() {
 	fi
 
 	if os_is_archlinux; then
-		sudo pacman -S --noconfirm --needed \
-			tailscale \
-			audacity \
-			firefox \
-			transmission-gtk \
-			vlc
-
-		yay -Sy --noconfirm --needed \
-			bitwarden \
-			bitwarden-cli \
-			ghostty \
-			google-chrome \
-			jetbrains-toolbox \
-			mullvad-vpn \
-			obsidian \
-			signal-desktop \
-			vscodium \
-			zen-browser \
-			zoom
+		(
+			# shellcheck disable=SC2164
+			cd "$(chezmoi_corytheboyd_path)/archlinux"
+			bash install_desktop.sh
+		)
 	fi
 }
 

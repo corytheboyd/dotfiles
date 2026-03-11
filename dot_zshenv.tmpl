@@ -1,0 +1,13 @@
+# shellcheck shell=bash
+
+# shellcheck disable=SC1091
+source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+
+# bitwarden ssh agent
+# https://bitwarden.com/help/ssh-agent
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+
+EDITOR="$(which nvim)"
+export EDITOR
+
+export PATH="$PATH:$HOME/.local/bin"

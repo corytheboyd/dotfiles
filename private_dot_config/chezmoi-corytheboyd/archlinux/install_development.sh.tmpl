@@ -1,0 +1,13 @@
+# shellcheck shell=bash
+
+sudo pacman -S --noconfirm --needed \
+	direnv \
+	docker \
+	docker-buildx \
+	docker-compose \
+	lazygit \
+	neovim \
+	shfmt
+
+yay -Sy --noconfirm --needed \
+	just-lsp
