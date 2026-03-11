@@ -1,4 +1,8 @@
-{{- if (ne .chezmoi.os "darwin") }}
-{{ .chezmoi.homeDir }}/.local/config/alfred
-{{ .chezmoi.homeDir }}/Library
-{{- end }}
+{{ if ne .chezmoi.os "darwin" }}
+Library/Application Support/
+.local/config/alfred
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+a/b/c
+{{ end }}
