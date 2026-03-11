@@ -4,4 +4,8 @@
 compile = false
 
 [tools]
-node = "lts"
+go = "latest"
+node = "24"
+python = "3"
+ruby = "3"
+rust = "latest"
