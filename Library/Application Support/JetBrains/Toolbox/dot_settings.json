@@ -1,0 +1,27 @@
+{
+    "ordering": {
+        "installed": [
+            "d02bfe17-321b-4c4a-bd2c-4818d4a51a30",
+            "93dfb6d9-e6ae-4603-ad07-82323836774f",
+            "0091045c-a812-422f-b236-0a1f5cc3b280",
+            "dbbeec35-7c62-4fec-b0d0-bf444e45fe27",
+            "6aa1a89a-78be-40a8-8695-0d9cf3a0f43f",
+            "3cb210ec-497b-4678-92df-9465be3a885d",
+            "1c46c971-1d99-49e2-944e-f7af9b2b61d9",
+            "db25139a-aa6f-4857-901b-1d920981168c",
+            "IDEA-U-42b7ef4e-1cdd-4fb8-a890-ca936a417fa1",
+            "Rider-74e80ba5-159e-4627-9eee-ef9364427eeb",
+            "CLion-c5dda103-f727-4715-9376-4a276b2a1ec8",
+            "RustRover-036ff2b4-2001-428f-afcf-3d9083171fe5"
+        ]
+    },
+    "shell_scripts": {
+        "location": "/Users/corytheboyd/.local/bin"
+    },
+    "tools": {
+        "update_all_automatically": true
+    },
+    "jetbrains_account": {
+        "active": "12444632"
+    }
+}
