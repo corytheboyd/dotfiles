@@ -3,6 +3,7 @@ run = [
     "chezmoi re-add ~/.config/VSCodium/User/settings.json",
     "chezmoi re-add ~/.local/share/JetBrains/Toolbox/.settings.json",
     "chezmoi re-add ~/.config/mise/config.toml",
+    "chezmoi re-add ~/.config/rbw/config.json",
 ]
 
 [tasks.update]
