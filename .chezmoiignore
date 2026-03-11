@@ -4,5 +4,4 @@ Library/Application Support/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
-a/b/c
 {{ end }}
