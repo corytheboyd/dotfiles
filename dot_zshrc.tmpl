@@ -121,6 +121,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # other
 #{{- end }}
 
-# rbw shell completions
+# rbw shell completion
 # https://github.com/doy/rbw
 eval "$(rbw gen-completions zsh)"
+
+# sops shell completion
+# https://github.com/getsops/sops
+eval "$(sops completion zsh)"
