@@ -31,3 +31,15 @@ Override default template delimiters in shell scripts so that we can execute she
 ```
 
 <https://www.chezmoi.io/reference/templates/directives/#delimiters>
+
+## Syncing local changes back to chezmoi
+
+For example, VSCode settings changed in IDE, but are tracked by chezmoi.
+
+The chezmoi command is:
+
+```shell
+chezmoi re-add $FILE
+```
+
+I have standardized it to `mise run sync` though in the `~/.config/chezmoi-corytheboyd` directory. See [private_dot_config/chezmoi-corytheboyd/mise.toml](private_dot_config/chezmoi-corytheboyd/mise.toml) for example.

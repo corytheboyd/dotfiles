@@ -12,6 +12,7 @@
   "editor.tabSize": 4,
   "explorer.compactFolders": false,
   "extensions.autoCheckUpdates": false,
+  "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
@@ -28,5 +29,7 @@
       "strings": true
     }
   },
-  "files.autoSave": "onFocusChange",
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  }
 }
