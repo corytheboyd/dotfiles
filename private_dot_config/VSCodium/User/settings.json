@@ -1,3 +1,4 @@
+// foo
 {
   "[just]": {
     "editor.defaultFormatter": "nefrob.vscode-just-syntax"

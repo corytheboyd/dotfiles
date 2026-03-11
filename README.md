@@ -43,3 +43,11 @@ chezmoi re-add $FILE
 ```
 
 I have standardized it to `mise run sync` though in the `~/.config/chezmoi-corytheboyd` directory. See [private_dot_config/chezmoi-corytheboyd/mise.toml](private_dot_config/chezmoi-corytheboyd/mise.toml) for example.
+
+### THIS IS A ONE WAY STREET
+
+If you edit the file in chezmois source dir (`~/.local/share/chezmoi`) then this will override it with the current state of the file.
+
+For example, if you have added `~/.config/mise/config.toml` to the list of files to be synced, and you make changes to [private_dot_conifg/mise/config.toml](private_dot_conifg/mise/config.toml), those changes will be overwritten by the contents of `~/.config/mise/config.toml`.
+
+You should only add files to this list that are exclusively modified in normal user space, like mise, where the user runs commands like `mise use -g ruby@3` to set global tool versions.
