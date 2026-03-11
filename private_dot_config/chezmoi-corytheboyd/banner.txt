@@ -10,9 +10,6 @@
 │                                                         │
 ╚─────────────────────────────────────────────────────────╝
 |                                                         │
-| See available commands:                                 │
-|   chezmoi_corytheboyd                                   │
-|                                                         │
 | Update:                                                 │
 |   chezmoi_corytheboyd_update                            │
 |                                                         │
