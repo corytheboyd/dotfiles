@@ -34,5 +34,6 @@
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
-  }
+  },
+  "claudeCode.preferredLocation": "panel"
 }

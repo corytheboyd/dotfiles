@@ -110,16 +110,14 @@ eval "$(mise activate zsh)"
 
 # oh-my-zsh syntax highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-#{{- if eq .chezmoi.os "darwin" }}
-# shellcheck disable=SC1091
-source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#{{- else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }}
-# shellcheck disable=SC1091
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# archlinux
-####{{- else }}
-# other
-#{{- end }}
+if os_is_darwin; then
+	# shellcheck disable=SC1091
+	source "$(brew --prefix)"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+if os_is_archlinux; then
+	# shellcheck disable=SC1091
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # rbw shell completion
 # https://github.com/doy/rbw
