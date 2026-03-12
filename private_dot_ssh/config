@@ -6,6 +6,10 @@ Host motherbase_local
   User pliskin
   HostName motherbase.local
 
+Host motherbase_tailscale
+  User pliskin
+  HostName motherbase.taild3766c.ts.net
+
 Host printer_local
   User printer
   HostName printer.local
