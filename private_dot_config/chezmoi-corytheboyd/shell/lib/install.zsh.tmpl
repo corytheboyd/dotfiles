@@ -14,3 +14,10 @@ function install_omz() {
 	fi
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
+
+function install_vscode_extensions() {
+	#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+	#{{- range $manifest.vscode.extensions }}
+	"#{{ . }}"
+	#{{- end }}
+}
