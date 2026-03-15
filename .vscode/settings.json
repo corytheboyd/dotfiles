@@ -9,5 +9,6 @@
         "symlink_*.*.*": "plaintext",
         "symlink_*.*": "plaintext",
         "symlink_*": "plaintext",
+        "Brewfile.tmpl": "plaintext"
     }
 }
