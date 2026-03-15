@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# manifest hash: {{ include "private_dot_config/chezmoi-corytheboyd/manifest.yaml" | sha256sum }}
 
 # shellcheck disable=SC1091
 source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Brewfile global hash: {{ include "private_dot_config/homebrew/Brewfile" | sha256sum }}
+# manifest hash: {{ include "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/manifest.yaml" | sha256sum }}
+# lib hash: {{ include "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell/lib/install.zsh" | sha256sum }}
+# lib hash: {{ include "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell/lib/logger.zsh" | sha256sum }}
+# lib hash: {{ include "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell/lib/manifest.zsh" | sha256sum }}
 
 # TODO moving to .zshenv should have made this obsolete
 # shellcheck disable=SC1091
