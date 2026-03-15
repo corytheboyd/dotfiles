@@ -25,8 +25,8 @@ log_info "Bootstrapping darwin..."
 log_info "Installing oh-my-zsh..."
 install_omz
 
-# log_info "Building Brewfile..."
-# manifest_darwin_build_brewfile
+log_info "Installing VSCodium extensions..."
+install_vscode_extensions
 
 log_info "Syncing homebrew packages..."
 brew bundle \

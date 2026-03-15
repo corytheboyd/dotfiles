@@ -18,6 +18,6 @@ function install_omz() {
 function install_vscode_extensions() {
 	#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
 	#{{- range $manifest.vscode.extensions }}
-	"#{{ . }}"
+	codium --install-extension "#{{ . }}"
 	#{{- end }}
 }
