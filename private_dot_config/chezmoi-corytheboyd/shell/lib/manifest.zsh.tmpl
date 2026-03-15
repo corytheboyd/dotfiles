@@ -1,0 +1,17 @@
+# shellcheck shell=bash
+
+function manifest_darwin_build_brewfile() {
+	if ! has_program dasel; then
+		brew install dasel
+	fi
+	local manifest_file
+	manifest_file="{{ .chezmoi.sourceDir }}/manifest.yaml"
+
+	cat "$manifest_file"
+	return
+
+	# shellcheck disable=SC2016
+	cat "$manifest_file" |
+		dasel -i yaml \
+			'darwin.homebrew.brews.map("brew \"" + $this + "\"").join("; ")'
+}

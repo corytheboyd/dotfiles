@@ -11,6 +11,9 @@ source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
 
+# shellcheck disable=SC1091
+source "$(chezmoi_corytheboyd_path)/shell/lib/manifest.zsh"
+
 if ! os_is_darwin; then
 	log_debug "Not darwin, skipping"
 	exit 0
@@ -20,6 +23,9 @@ log_info "Bootstrapping darwin..."
 
 log_info "Installing oh-my-zsh..."
 install_omz
+
+log_info "Building Brewfile..."
+manifest_darwin_build_brewfile
 
 log_info "Syncing homebrew packages..."
 brew bundle --global --cleanup --upgrade --zap
