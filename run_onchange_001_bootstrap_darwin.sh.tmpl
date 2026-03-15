@@ -30,6 +30,7 @@ install_vscode_extensions
 
 log_info "Syncing homebrew packages..."
 brew bundle \
+	--file="{{ .chezmoi.homeDir }}/.config/homebrew/Brewfile" \
 	--global \
 	--upgrade \
 	--zap \
