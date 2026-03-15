@@ -17,10 +17,14 @@
   },
   "darwin": {
     "homebrew": {
+      "taps": [
+        "domt4/autoupdate"
+      ],
       "brews": [
         "7zip",
         "chezmoi",
         "curl",
+        "dasel",
         "fzf",
         "git",
         "htop",
@@ -44,6 +48,7 @@
         "mise",
         "neovim",
         "shfmt",
+        "shellcheck",
         "sops",
         "gmp",
         "libyaml"
@@ -70,7 +75,8 @@
         "ungoogled-chromium",
         "vlc",
         "zen",
-        "zoom"
+        "zoom",
+        "vscodium"
       ]
     }
   }
