@@ -126,3 +126,8 @@ eval "$(rbw gen-completions zsh)"
 # sops shell completion
 # https://github.com/getsops/sops
 eval "$(sops completion zsh)"
+
+# colima completion
+if os_is_darwin; then
+	eval "$(colima completion zsh)"
+fi

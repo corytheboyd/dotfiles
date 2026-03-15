@@ -51,3 +51,16 @@ If you edit the file in chezmois source dir (`~/.local/share/chezmoi`) then this
 For example, if you have added `~/.config/mise/config.toml` to the list of files to be synced, and you make changes to [private_dot_conifg/mise/config.toml](private_dot_conifg/mise/config.toml), those changes will be overwritten by the contents of `~/.config/mise/config.toml`.
 
 You should only add files to this list that are exclusively modified in normal user space, like mise, where the user runs commands like `mise use -g ruby@3` to set global tool versions.
+
+## Homebrew
+
+Specify packages local to the machine in `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+[homebrew]
+    taps = []
+    brews = []
+    casks = []
+```
+
+Otherwise, ad-hoc installed brews will be uninstalled, so that all software is accounted for in configuration.

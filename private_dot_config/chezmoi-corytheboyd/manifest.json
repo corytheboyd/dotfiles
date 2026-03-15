@@ -55,7 +55,6 @@
       ],
       "casks": [
         "alfred",
-        "audacity",
         "bitwarden",
         "claude",
         "claude-code",
@@ -77,6 +76,48 @@
         "zen",
         "zoom",
         "vscodium"
+      ]
+    }
+  },
+  "archlinux": {
+    "packages": {
+      "pacman": [
+        "7zip",
+        "chezmoi",
+        "curl",
+        "fzf",
+        "git",
+        "htop",
+        "just",
+        "jq",
+        "ripgrep",
+        "starship",
+        "tree",
+        "wget",
+        "zsh",
+        "mise",
+        "docker",
+        "docker-buildx",
+        "docker-compose",
+        "lazygit",
+        "neovim",
+        "shfmt",
+        "tailscale",
+        "transmission-gtk",
+        "vlc"
+      ],
+      "yay": [
+        "jless",
+        "bitwarden",
+        "bitwarden-cli",
+        "ghostty",
+        "jetbrains-toolbox",
+        "mullvad-vpn",
+        "obsidian",
+        "signal-desktop",
+        "vscodium",
+        "zen-browser",
+        "zsh-syntax-highlighting"
       ]
     }
   }

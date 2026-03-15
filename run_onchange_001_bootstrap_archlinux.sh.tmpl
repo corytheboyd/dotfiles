@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 # manifest hash: {{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
 
 # shellcheck disable=SC1091
-source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
@@ -31,13 +32,21 @@ function install_yay() {
 }
 
 log_info "Updating system..."
+sudo pacman -Sy --noconfirm archlinux-keyring
 sudo pacman -Syu --noconfirm
 
 log_info "Installing yay..."
 install_yay
 
-log_info "Installing system packages..."
-chezmoi_corytheboyd_install_system
+# TODO install dependencies by implementing similar Brewfile --cleanup behavior with our own state file.
+
+log_info "Installing packages..."
+#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+# shellcheck disable=SC2154
+{
+	sudo pacman -Sy --noconfirm #{{ $manifest.archlinux.packages.pacman | join " " }}
+	yay -Sy --noconfirm         #{{ $manifest.archlinux.packages.yay | join " " }}
+}
 
 log_info "Set default shell to ZSH"
 sudo chsh -s "$(command -v zsh)"
@@ -45,4 +54,5 @@ sudo chsh -s "$(command -v zsh)"
 log_info "Installing oh-my-zsh..."
 install_omz
 
-# TODO install dependencies by implementing similar Brewfile --cleanup behavior with our own state file.
+log_info "Installing VSCodium extensions..."
+install_vscode_extensions
