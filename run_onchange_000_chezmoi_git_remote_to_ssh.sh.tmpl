@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC1091
+{
+	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+log_info "Overriding chezmoi git remote to ssh..."
+
+# shellcheck disable=SC2164
+(
+	cd "{{ .chezmoi.sourceDir }}"
+	git remote set-url origin git@github.com:corytheboyd/dotfiles.git
+)
