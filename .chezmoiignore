@@ -1,7 +1,7 @@
 {{ if ne .chezmoi.os "darwin" }}
-Library/Application Support/
-.local/config/alfred
-.config/homebrew
+~/Library/Application Support/
+~/.local/config/alfred
+~/.config/homebrew
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
