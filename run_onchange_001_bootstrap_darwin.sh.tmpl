@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# brewfile hash: {{ include "private_dot_config/homebrew/Brewfile.tmpl" | sha256sum }}
-# manifest hash: {{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+# brewfile hash: #{{ include "private_dot_config/homebrew/Brewfile.tmpl" | sha256sum }}
+# manifest hash: #{{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
 
 # TODO moving to .zshenv should have made this obsolete
 # shellcheck disable=SC1091
-source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
@@ -24,7 +25,7 @@ install_omz
 
 log_info "Syncing homebrew packages..."
 brew bundle \
-	--file="{{ .chezmoi.homeDir }}/.config/homebrew/Brewfile" \
+	--file="#{{ .chezmoi.homeDir }}/.config/homebrew/Brewfile" \
 	--upgrade \
 	--zap \
 	--cleanup
