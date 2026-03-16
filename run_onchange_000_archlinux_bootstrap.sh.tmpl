@@ -14,7 +14,7 @@ if ! os_is_archlinux; then
 fi
 
 function install_yay() {
-	if has_program yay; then
+	if has_program yay && yay --version &>/dev/null; then
 		log_debug "yay already installed"
 		return 0
 	fi
@@ -30,8 +30,8 @@ function install_yay() {
 log_info "Bootstrapping archlinux..."
 
 log_info "Updating system..."
+sudo pacman -Syu --noconfirm
 sudo pacman -Sy --noconfirm archlinux-keyring
-# sudo pacman -Syu --noconfirm
 
 log_info "Installing yay..."
 install_yay

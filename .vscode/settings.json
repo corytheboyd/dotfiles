@@ -10,5 +10,11 @@
         "symlink_*.*": "plaintext",
         "symlink_*": "plaintext",
         "Brewfile.tmpl": "plaintext"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "exiasr.hadolint",
+        "editor.quickSuggestions": {
+            "strings": true
+        }
     }
 }

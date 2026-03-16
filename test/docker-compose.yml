@@ -2,5 +2,8 @@ services:
   archlinux:
     build: archlinux
     platform: linux/arm64
+    environment:
+      - SKIP_INSTALL_DEPENDENCIES
     volumes:
       - ../:/chezmoi-source:ro
+      - ./chezmoi.toml:/home/robertpaulson/.config/chezmoi/chezmoi.toml

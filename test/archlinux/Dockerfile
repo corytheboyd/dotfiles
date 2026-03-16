@@ -5,13 +5,14 @@ RUN sed -i '/^\[options\]/a DisableSandbox' /etc/pacman.conf && \
     useradd -m -s /bin/bash robertpaulson && \
     echo "robertpaulson ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/robertpaulson
 
-# yay
-RUN 		sudo pacman -Sy --noconfirm --needed git base-devel && \
-		sudo pacman -Rns --noconfirm rust 2>/dev/null || true && \
-		git clone https://aur.archlinux.org/yay-bin.git && \
-		cd yay-bin || exit 1 && \
-		makepkg -si --noconfirm
-
-
 USER robertpaulson
 WORKDIR /home/robertpaulson
+
+RUN mkdir -p .config/chezmoi
+
+# yay
+RUN sudo pacman -Syu --noconfirm --needed git base-devel && \
+	sudo pacman -Rns --noconfirm rust 2>/dev/null || true && \
+	git clone https://aur.archlinux.org/yay-bin.git && \
+	cd yay-bin && \
+	makepkg -si --noconfirm

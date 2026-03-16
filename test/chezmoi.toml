@@ -1,0 +1,2 @@
+[scriptEnv]
+SKIP_INSTALL_DEPENDENCIES = "1"
