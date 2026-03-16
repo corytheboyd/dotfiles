@@ -1,13 +1,19 @@
 # shellcheck shell=bash
-# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 
 function chezmoi_corytheboyd_path() {
-	echo "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd"
+	echo "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd"
 }
 
 function chezmoi_corytheboyd_update() {
 	(
 		cd "$(chezmoi_corytheboyd_path)" || return 1
 		mise run update
+	)
+}
+
+function chezmoi_corytheboyd_apply() {
+	(
+		cd "$(chezmoi_corytheboyd_path)" || return 1
+		mise run apply
 	)
 }

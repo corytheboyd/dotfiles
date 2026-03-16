@@ -4,14 +4,14 @@
 
 {{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
 
-{{- range concat $manifest.darwin.homebrew.taps (default list .homebrew.taps) | uniq }}
+{{- range concat $manifest.darwin.homebrew.taps (dig "homebrew" "taps" (list) .) | uniq | sortAlpha }}
 tap "{{ . }}"
 {{- end }}
 
-{{- range concat $manifest.darwin.homebrew.brews (default list .homebrew.brews) | uniq }}
+{{- range concat $manifest.darwin.homebrew.brews (dig "homebrew" "brews" (list) .) | uniq | sortAlpha }}
 brew "{{ . }}"
 {{- end }}
 
-{{- range concat $manifest.darwin.homebrew.casks (default list .homebrew.casks) | uniq }}
+{{- range concat $manifest.darwin.homebrew.casks (dig "homebrew" "casks" (list) .) | uniq | sortAlpha }}
 cask "{{ . }}"
 {{- end }}

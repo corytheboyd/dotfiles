@@ -6,6 +6,10 @@ run = [
     "chezmoi re-add ~/.config/rbw/config.json",
 ]
 
-[tasks.update]
+[tasks.apply]
 depends = ["sync"]
-run = ["cat banner.txt", "chezmoi update"]
+run = ["chezmoi apply"]
+
+[tasks.update]
+depends = []
+run = ["chezmoi update"]
