@@ -22,8 +22,6 @@ if ! has_program zsh; then
 	if os_is_archlinux; then
 		sudo pacman -Sy --noconfirm zsh
 	fi
-	log_info "Setting default shell to zsh..."
-	sudo chsh -s "$(which zsh)" "$(whoami)"
 fi
 
 export RUNZSH=no
