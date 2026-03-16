@@ -12,9 +12,6 @@ source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
 # shellcheck disable=SC1091
 source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
 
-# shellcheck disable=SC1091
-source "$(chezmoi_corytheboyd_path)/shell/lib/manifest.zsh"
-
 if ! os_is_darwin; then
 	log_debug "Not darwin, skipping"
 	exit 0
