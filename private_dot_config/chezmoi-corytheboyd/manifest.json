@@ -115,6 +115,7 @@
       ],
       "yay": [
         "bitwarden-bin",
+        "claude-code",
         "ghostty",
         "jetbrains-toolbox",
         "jless",
