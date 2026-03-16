@@ -64,3 +64,9 @@ Specify packages local to the machine in `~/.config/chezmoi/chezmoi.toml`:
 ```
 
 Otherwise, ad-hoc installed brews will be uninstalled, so that all software is accounted for in configuration.
+
+## Arch
+
+### timeshift
+
+`timeshift` is the program creating btrfs backups. Install and use the CLI to restore as well.
