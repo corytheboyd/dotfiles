@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
-# manifest hash: #{{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
+#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+#{{ $manifest.archlinux.packages.pacman | toRawJson | sha256sum }}
 
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
