@@ -26,14 +26,20 @@ cask "{{ . }}"
 # These packages are sourced from chezmoid data: ~/.config/chezmoi/chezmoi.toml
 ###############################################################################
 
+{{- if and (hasKey . "homebrew") (hasKey .homebrew "taps") }}
 {{- range .homebrew.taps }}
 tap "{{ . }}"
 {{- end }}
+{{- end }}
 
+{{- if and (hasKey . "homebrew") (hasKey .homebrew "brews") }}
 {{- range .homebrew.brews }}
 brew "{{ . }}"
 {{- end }}
+{{- end }}
 
+{{- if and (hasKey . "homebrew") (hasKey .homebrew "casks") }}
 {{- range .homebrew.casks }}
 cask "{{ . }}"
+{{- end }}
 {{- end }}

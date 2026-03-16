@@ -9,10 +9,13 @@ function install_brew() {
 }
 
 function install_omz() {
-	if has_directory "#{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
-		return 0
-	fi
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	(
+		if has_directory "#{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
+			return 0
+		fi
+		export OVERWRITE_CONFIRMATION=no
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	)
 }
 
 function install_vscode_extensions() {

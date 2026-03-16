@@ -48,9 +48,6 @@ log_info "Installing packages..."
 	yay -Sy --noconfirm         #{{ $manifest.archlinux.packages.yay | join " " }}
 }
 
-log_info "Set default shell to ZSH"
-sudo chsh -s "$(command -v zsh)"
-
 log_info "Installing oh-my-zsh..."
 install_omz
 

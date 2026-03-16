@@ -57,7 +57,7 @@ You should only add files to this list that are exclusively modified in normal u
 Specify packages local to the machine in `~/.config/chezmoi/chezmoi.toml`:
 
 ```toml
-[homebrew]
+[data.homebrew]
     taps = []
     brews = []
     casks = []
