@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
-# brewfile hash: #{{ include "private_dot_config/homebrew/Brewfile.tmpl" | sha256sum }}
-# manifest hash: #{{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
+#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+# manifest hash: #{{ $manifest.darwin | toRawJson | sha256sum }}
 
 # TODO moving to .zshenv should have made this obsolete
 # shellcheck disable=SC1091
