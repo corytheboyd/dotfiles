@@ -32,27 +32,18 @@ Override default template delimiters in shell scripts so that we can execute she
 
 <https://www.chezmoi.io/reference/templates/directives/#delimiters>
 
-## Syncing local changes back to chezmoi
-
-For example, VSCode settings changed in IDE, but are tracked by chezmoi.
-
-The chezmoi command is:
+`chezmoid cd` needs to be told to use zsh. Add to `~/.config/chezmoi/chezmoi.toml`:
 
 ```shell
-chezmoi re-add $FILE
+[cd]
+command = "/usr/bin/zsh"
 ```
 
-I have standardized it to `mise run sync` though in the `~/.config/chezmoi-corytheboyd` directory. See [private_dot_config/chezmoi-corytheboyd/mise.toml](private_dot_config/chezmoi-corytheboyd/mise.toml) for example.
+<https://www.chezmoi.io/reference/configuration-file/variables/#cd-command>
 
-### THIS IS A ONE WAY STREET
+## Darwin
 
-If you edit the file in chezmois source dir (`~/.local/share/chezmoi`) then this will override it with the current state of the file.
-
-For example, if you have added `~/.config/mise/config.toml` to the list of files to be synced, and you make changes to [private_dot_conifg/mise/config.toml](private_dot_conifg/mise/config.toml), those changes will be overwritten by the contents of `~/.config/mise/config.toml`.
-
-You should only add files to this list that are exclusively modified in normal user space, like mise, where the user runs commands like `mise use -g ruby@3` to set global tool versions.
-
-## Homebrew
+### Homebrew
 
 Specify packages local to the machine in `~/.config/chezmoi/chezmoi.toml`:
 

@@ -3,8 +3,3 @@
 function chezmoi_corytheboyd_path() {
 	echo "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd"
 }
-
-function chezmoi_corytheboyd_cd() {
-	# shellcheck disable=SC2164
-	cd "{{ .chezmoi.sourceDir }}"
-}
