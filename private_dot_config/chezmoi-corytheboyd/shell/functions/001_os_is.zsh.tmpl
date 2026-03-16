@@ -11,10 +11,14 @@ function os_is_darwin() {
 }
 
 function os_is_archlinux() {
-	#{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "idLike") (eq .chezmoi.osRelease.idLike "arch") }}
-	return 0
-	#{{- else }}
 	# shellcheck disable=SC2317
-	return 1
-	#{{- end }}
+	{
+		#{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") (eq .chezmoi.osRelease.id "arch") }}
+		return 0
+		#{{- else if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "idLike") (eq .chezmoi.osRelease.idLike "arch") }}
+		return 0
+		#{{- else }}
+		return 1
+		#{{- end }}
+	}
 }
