@@ -35,5 +35,5 @@ sudo pacman -Rns --noconfirm rust 2>/dev/null || true
 # shellcheck disable=SC2154
 {
 	sudo pacman -Sy --noconfirm #{{ $manifest.archlinux.packages.pacman | join " " }}
-	yay -Sy --noconfirm         #{{ $manifest.archlinux.packages.yay | join " " }}
+	yay -Sy --noconfirm --pgpfetch #{{ $manifest.archlinux.packages.yay | join " " }}
 }

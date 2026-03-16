@@ -33,5 +33,10 @@ log_info "Updating system..."
 sudo pacman -Syu --noconfirm
 sudo pacman -Sy --noconfirm archlinux-keyring
 
+log_info "Configuring GPG keyserver..."
+mkdir -p ~/.gnupg
+chmod 700 ~/.gnupg
+echo "keyserver hkps://keyserver.ubuntu.com" >> ~/.gnupg/gpg.conf
+
 log_info "Installing yay..."
 install_yay

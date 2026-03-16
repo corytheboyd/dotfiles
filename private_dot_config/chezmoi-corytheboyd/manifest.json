@@ -113,15 +113,16 @@
         "zsh-syntax-highlighting"
       ],
       "yay": [
-        "bitwarden",
+        "bitwarden-bin",
         "ghostty",
         "jetbrains-toolbox",
         "jless",
         "mullvad-vpn",
-        "obsidian",
+        "obsidian-bin",
         "signal-desktop",
+        "tailscaledesktop",
         "vscodium-bin",
-        "zen-browser"
+        "zen-browser-bin"
       ]
     }
   }
