@@ -34,6 +34,11 @@ log_info "Installing packages..."
 sudo pacman -Rns --noconfirm rust 2>/dev/null || true
 # shellcheck disable=SC2154
 {
-	sudo pacman -Sy --noconfirm #{{ $manifest.archlinux.packages.pacman | join " " }}
+	sudo pacman -Sy --noconfirm    #{{ $manifest.archlinux.packages.pacman | join " " }}
 	yay -Sy --noconfirm --pgpfetch #{{ $manifest.archlinux.packages.yay | join " " }}
 }
+
+if [[ "$(getent passwd "$USER" | cut -d: -f7)" != "/bin/zsh" ]]; then
+	log_info "Setting default shell to zsh..."
+	chsh -s "$(which zsh)" "$(whoami)"
+fi
