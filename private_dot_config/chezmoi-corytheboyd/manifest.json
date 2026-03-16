@@ -4,6 +4,7 @@
       "Anthropic.claude-code",
       "DavidAnson.vscode-markdownlint",
       "editorconfig.editorconfig",
+      "exiasr.hadolint",
       "hverlin.mise-vscode",
       "mkhl.shfmt",
       "mousavian.ssh-config-syntax-highlighter",

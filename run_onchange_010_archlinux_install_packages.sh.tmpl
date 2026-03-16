@@ -14,6 +14,17 @@ if ! os_is_archlinux; then
 	exit 0
 fi
 
+if ! yay --version &>/dev/null; then
+	log_info "yay is broken (libalpm mismatch), reinstalling..."
+	(
+		tmpdir=$(mktemp -d)
+		sudo pacman -Sy --noconfirm --needed git base-devel
+		git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay-bin"
+		cd "$tmpdir/yay-bin" || exit 1
+		makepkg -si --noconfirm
+	)
+fi
+
 log_info "Installing packages..."
 # shellcheck disable=SC2154
 {
