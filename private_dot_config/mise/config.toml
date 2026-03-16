@@ -8,8 +8,26 @@
 compile = false
 
 [tools]
-go = "latest"
-node = "24"
-python = "3"
-ruby = "3"
-rust = "latest"
+
+[tools.ruby]
+version = "latest"
+preinstall = '''
+if os_is_darwin; then
+    brew install libyaml
+fi
+if os_is_archlinux; then
+    sudo pacman -Syu --noconfirm libyaml
+fi
+'''
+
+[tools.go]
+version = "latest"
+
+[tools.node]
+version = "24"
+
+[tools.python]
+version = "3"
+
+[tools.rust]
+version = "latest"

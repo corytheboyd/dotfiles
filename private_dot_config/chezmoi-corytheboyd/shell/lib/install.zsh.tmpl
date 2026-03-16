@@ -13,6 +13,7 @@ function install_omz() {
 		if has_directory "#{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
 			return 0
 		fi
+		export KEEP_ZSHRC=yes
 		export OVERWRITE_CONFIRMATION=no
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	)

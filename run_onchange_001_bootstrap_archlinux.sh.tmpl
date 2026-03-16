@@ -2,6 +2,8 @@
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 # manifest hash: {{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
 
+set -e
+
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
