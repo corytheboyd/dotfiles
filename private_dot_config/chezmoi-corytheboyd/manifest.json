@@ -101,6 +101,7 @@
         "neovim",
         "rbw",
         "ripgrep",
+        "signal-desktop",
         "shfmt",
         "sops",
         "starship",
@@ -119,7 +120,6 @@
         "jless",
         "mullvad-vpn",
         "obsidian-bin",
-        "signal-desktop",
         "tailscaledesktop",
         "vscodium-bin",
         "zen-browser-bin"
