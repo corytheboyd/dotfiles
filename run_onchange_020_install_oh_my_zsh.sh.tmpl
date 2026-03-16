@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC1091
+{
+	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/install.zsh"
+}
+
+if has_directory "{{ .chezmoi.homeDir }}/.oh-my-zsh"; then
+	log_debug "oh-my-zsh already installed"
+	exit 0
+fi
+
+log_info "Installing oh-my-zsh..."
+
+export KEEP_ZSHRC=yes
+export OVERWRITE_CONFIRMATION=no
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# {{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+# manifest hash: {{ $manifest.darwin | toRawJson | sha256sum }}
+
+# shellcheck disable=SC1091
+{
+	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_darwin; then
+	log_debug "Not darwin, skipping"
+	exit 0
+fi
+
+log_info "Installing packages..."
+brew bundle \
+	--file="{{ .chezmoi.homeDir }}/.config/homebrew/Brewfile" \
+	--upgrade \
+	--zap \
+	--cleanup

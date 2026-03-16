@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC1091
+{
+	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_darwin; then
+	log_debug "Not darwin, skipping"
+	exit 0
+fi
+
+function install_brew() {
+	if has_program brew; then
+		return 0
+	fi
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+log_info "Bootstrapping darwin..."
+
+install_brew

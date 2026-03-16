@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+# manifest hash: #{{ $manifest.archlinux.packages | toRawJson | sha256sum }}
+
+# shellcheck disable=SC1091
+{
+	source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_archlinux; then
+	log_debug "Not archlinux, skipping"
+	exit 0
+fi
+
+log_info "Installing packages..."
+# shellcheck disable=SC2154
+{
+	sudo pacman -Sy --noconfirm #{{ $manifest.archlinux.packages.pacman | join " " }}
+	yay -Sy --noconfirm         #{{ $manifest.archlinux.packages.yay | join " " }}
+}

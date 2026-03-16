@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# {{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+# manifest hash: {{ $manifest.archlinux | toRawJson | sha256sum }}
+
+# shellcheck disable=SC1091
+{
+	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_archlinux; then
+	log_debug "Not archlinux, skipping"
+	exit 0
+fi
+
+function install_yay() {
+	if has_program yay; then
+		log_debug "yay already installed"
+		return 0
+	fi
+	(
+		sudo pacman -Sy --noconfirm --needed git base-devel
+		sudo pacman -Rns --noconfirm rust 2>/dev/null || true
+		git clone https://aur.archlinux.org/yay-bin.git
+		cd yay-bin || exit 1
+		makepkg -si --noconfirm
+	)
+}
+
+log_info "Bootstrapping archlinux..."
+
+log_info "Updating system..."
+sudo pacman -Sy --noconfirm archlinux-keyring
+sudo pacman -Syu --noconfirm
+
+log_info "Installing yay..."
+install_yay

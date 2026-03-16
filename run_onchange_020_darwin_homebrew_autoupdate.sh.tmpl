@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC1091
+{
+	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_darwin; then
+	log_debug "Not darwin, skipping"
+	exit 0
+fi
+
+log_info "Creating homebrew autoupdate..."
+
+brew autoupdate delete &>/dev/null
+brew autoupdate start \
+	43201 \
+	--upgrade \
+	--cleanup \
+	--immediate \
+	--sudo
