@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+
+# shellcheck disable=SC1091
+{
+	source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_archlinux; then
+	log_debug "Not archlinux, skipping"
+	exit 0
+fi
+
+log_info "Configuring mDNS (.local domain resolution)..."
+
+log_info "Enabling avahi-daemon..."
+sudo systemctl enable --now avahi-daemon
+
+log_info "Configuring nsswitch.conf for mDNS..."
+if ! grep -q 'mdns_minimal' /etc/nsswitch.conf; then
+	sudo sed -i 's/^hosts:.*/hosts: files mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns/' /etc/nsswitch.conf
+	log_info "nsswitch.conf updated"
+else
+	log_debug "nsswitch.conf already configured for mDNS"
+fi

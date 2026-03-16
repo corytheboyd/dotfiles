@@ -86,6 +86,8 @@
     "packages": {
       "pacman": [
         "7zip",
+        "avahi",
+        "nss-mdns",
         "chezmoi",
         "curl",
         "docker",
