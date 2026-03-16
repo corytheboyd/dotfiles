@@ -23,5 +23,5 @@ Host conrad_nas_local
   HostName theironwolves.local
 
 Host *
-  IdentityAgent /Users/corytheboyd/.bitwarden-ssh-agent.sock
+  IdentityAgent {{ .chezmoi.homeDir }}/.bitwarden-ssh-agent.sock
   SetEnv TERM=xterm-256color
