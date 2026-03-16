@@ -3,6 +3,7 @@
 # manifest hash: {{ include "private_dot_config/chezmoi-corytheboyd/manifest.json" | sha256sum }}
 
 set -e
+set -v
 
 # shellcheck disable=SC1091
 source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
