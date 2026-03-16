@@ -15,9 +15,6 @@ preinstall = '''
 if os_is_darwin; then
     brew install libyaml
 fi
-if os_is_archlinux; then
-    sudo pacman -Syu --noconfirm libyaml
-fi
 '''
 
 [tools.go]
