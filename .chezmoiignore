@@ -1,8 +1,24 @@
+###############################################################################
+# global ignores
+###############################################################################
+
+README.md
+alfred-settings.png
+test
+
+###############################################################################
+# darwin only
+###############################################################################
+
 {{ if ne .chezmoi.os "darwin" }}
-~/Library/Application Support/
-~/.local/config/alfred
-~/.config/homebrew
+Library
+.local/config/alfred
 {{ end }}
 
-{{ if ne .chezmoi.os "linux" }}
+###############################################################################
+# archlinux only
+###############################################################################
+
+{{ if not (and (eq .chezmoi.os "linux") (or (eq (get .chezmoi.osRelease "id") "arch") (eq (get .chezmoi.osRelease "idLike") "arch"))) }}
+.config/plasma-workspace
 {{ end }}
