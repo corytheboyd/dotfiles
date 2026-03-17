@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+
+# shellcheck disable=SC1091
+{
+	source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
+}
+
+if ! os_is_archlinux; then
+	log_debug "Not archlinux, skipping"
+	exit 0
+fi
+
+# See this page if it stops working
+# https://repo.cider.sh
+
+function is_repository_added() {
+	grep -q "^\[cidercollective\]" /etc/pacman.conf
+}
+
+function add_repository() {
+	sudo tee -a /etc/pacman.conf <<'EOF'
+# Cider Collective Repository
+[cidercollective]
+SigLevel = Required TrustedOnly
+Server = https://repo.cider.sh/arch
+EOF
+}
+
+function import_gpg_key() {
+	curl -s https://repo.cider.sh/ARCH-GPG-KEY | sudo pacman-key --add -
+	sudo pacman-key --lsign-key A0CD6B993438E22634450CDD2A236C3F42A61682
+}
+
+log_info "Installing cider..."
+
+log_info "Importing cider GPG key..."
+import_gpg_key
+
+if ! is_repository_added; then
+	log_info "Adding repository..."
+	add_repository
+fi
+
+log_info "Installing package..."
+sudo pacman -Sy
+sudo pacman -S --noconfirm cider
