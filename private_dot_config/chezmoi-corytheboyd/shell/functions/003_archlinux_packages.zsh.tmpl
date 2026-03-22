@@ -1,0 +1,41 @@
+#shellcheck shell=bash
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+#{{- $packages := $manifest.archlinux.packages }}
+# manifest hash: #{{ $packages | toRawJson | sha256sum }}
+
+function archlinux_packages_pacman() {
+	local result=()
+
+	#{{- range $package := $packages.default.pacman }}
+	# shellcheck disable=SC2154
+	result+=("#{{ $package }}")
+	#{{- end }}
+
+	if chezmoi_corytheboyd_profile_has_gaming; then
+		#{{- range $package := $packages.gaming.pacman }}
+		# shellcheck disable=SC2154
+		result+=("#{{ $package }}")
+		#{{- end }}
+	fi
+
+	printf '%s' "${result[*]}"
+}
+
+function archlinux_packages_yay() {
+	local result=()
+
+	#{{- range $i, $package := $packages.default.yay }}
+	# shellcheck disable=SC2154
+	result+=("#{{ $package }}")
+	#{{- end }}
+
+	if chezmoi_corytheboyd_profile_has_gaming; then
+		#{{- range $package := $packages.gaming.yay }}
+		# shellcheck disable=SC2154
+		result+=("#{{ $package }}")
+		#{{- end }}
+	fi
+
+	printf '%s' "${result[*]}"
+}

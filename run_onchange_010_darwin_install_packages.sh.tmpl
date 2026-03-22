@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-# {{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
-# manifest hash: {{ $manifest.darwin | toRawJson | sha256sum }}
+# chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+# #{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+# manifest hash: #{{ $manifest.darwin | toRawJson | sha256sum }}
+# chezmoi configFile hash: #{{ include .chezmoi.configFile | sha256sum }}
+# chezmoi-corytheboyd shell: #{{ range $file := glob (printf "%s/private_dot_config/chezmoi-corytheboyd/shell/**/*.zsh.tmpl" .chezmoi.sourceDir) }}#{{ include $file | sha256sum }}#{{ end }}
 
 # shellcheck disable=SC1091
 {
-	source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
+	source "#{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 	source "$(chezmoi_corytheboyd_path)/shell/lib/logger.zsh"
 }
 
@@ -19,17 +22,17 @@ brew bundle \
 	--upgrade \
 	--zap \
 	--cleanup \
-	<< 'EOF'
-{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
-{{- range concat $manifest.darwin.homebrew.taps (dig "homebrew" "taps" (list) .) | uniq | sortAlpha }}
+	<<'EOF'
+#{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
+#{{- range concat $manifest.darwin.homebrew.taps (dig "homebrew" "taps" (list) .) | uniq | sortAlpha }}
 tap "{{ . }}"
-{{- end }}
+#{{- end }}
 
-{{- range concat $manifest.darwin.homebrew.brews (dig "homebrew" "brews" (list) .) | uniq | sortAlpha }}
+#{{- range concat $manifest.darwin.homebrew.brews (dig "homebrew" "brews" (list) .) | uniq | sortAlpha }}
 brew "{{ . }}"
-{{- end }}
+#{{- end }}
 
-{{- range concat $manifest.darwin.homebrew.casks (dig "homebrew" "casks" (list) .) | uniq | sortAlpha }}
+#{{- range concat $manifest.darwin.homebrew.casks (dig "homebrew" "casks" (list) .) | uniq | sortAlpha }}
 cask "{{ . }}"
-{{- end }}
+#{{- end }}
 EOF

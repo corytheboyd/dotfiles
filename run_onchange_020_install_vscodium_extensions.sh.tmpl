@@ -2,6 +2,8 @@
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 #{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
 # manifest hash: #{{ $manifest.vscode.extensions | toRawJson | sha256sum }}
+# chezmoi configFile hash: #{{ include .chezmoi.configFile | sha256sum }}
+# chezmoi-corytheboyd shell: #{{ range $file := glob (printf "%s/private_dot_config/chezmoi-corytheboyd/shell/**/*.zsh.tmpl" .chezmoi.sourceDir) }}#{{ include $file | sha256sum }}#{{ end }}
 
 # shellcheck disable=SC1091
 {

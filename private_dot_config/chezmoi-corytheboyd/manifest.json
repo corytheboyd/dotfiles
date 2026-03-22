@@ -84,49 +84,58 @@
   },
   "archlinux": {
     "packages": {
-      "pacman": [
-        "7zip",
-        "avahi",
-        "nss-mdns",
-        "chezmoi",
-        "curl",
-        "docker",
-        "docker-buildx",
-        "docker-compose",
-        "fzf",
-        "git",
-        "htop",
-        "just",
-        "jq",
-        "lazygit",
-        "mise",
-        "neovim",
-        "rbw",
-        "ripgrep",
-        "signal-desktop",
-        "shfmt",
-        "sops",
-        "starship",
-        "tailscale",
-        "transmission-gtk",
-        "tree",
-        "vlc",
-        "wget",
-        "zsh",
-        "zsh-syntax-highlighting"
-      ],
-      "yay": [
-        "bitwarden-bin",
-        "claude-code",
-        "ghostty",
-        "jetbrains-toolbox",
-        "jless",
-        "mullvad-vpn",
-        "obsidian-bin",
-        "teamspeak3",
-        "vscodium-bin",
-        "zen-browser-bin"
-      ]
+      "default": {
+        "pacman": [
+          "7zip",
+          "avahi",
+          "nss-mdns",
+          "chezmoi",
+          "curl",
+          "docker",
+          "docker-buildx",
+          "docker-compose",
+          "fzf",
+          "git",
+          "htop",
+          "just",
+          "jq",
+          "lazygit",
+          "mise",
+          "neovim",
+          "ripgrep",
+          "shfmt",
+          "sops",
+          "starship",
+          "tree",
+          "wget",
+          "zsh",
+          "zsh-syntax-highlighting"
+        ],
+        "yay": [
+          "bitwarden-bin",
+          "claude-code",
+          "ghostty",
+          "jetbrains-toolbox",
+          "jless",
+          "obsidian-bin",
+          "vscodium-bin"
+        ]
+      },
+      "gaming": {
+        "pacman": [
+          "rbw",
+          "signal-desktop",
+          "transmission-gtk",
+          "tailscale",
+          "vlc"
+        ],
+        "yay": [
+          "mullvad-vpn",
+          "steam",
+          "teamspeak3",
+          "zen-browser-bin"
+        ]
+      }
     }
   }
 }

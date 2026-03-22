@@ -21,4 +21,12 @@ Library
 
 {{ if not (and (eq .chezmoi.os "linux") (or (eq (get .chezmoi.osRelease "id") "arch") (eq (get .chezmoi.osRelease "idLike") "arch"))) }}
 .config/plasma-workspace
+
+# -----------------------------------------------------------------------------
+# archlinux gaming only
+# -----------------------------------------------------------------------------
+{{ if has "gaming" .corytheboyd.profiles }}
+# ...
+{{ end }}
+
 {{ end }}

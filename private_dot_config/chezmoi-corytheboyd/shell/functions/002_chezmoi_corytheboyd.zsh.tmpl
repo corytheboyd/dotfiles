@@ -3,3 +3,12 @@
 function chezmoi_corytheboyd_path() {
 	echo "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd"
 }
+
+function chezmoi_corytheboyd_profile_has_gaming() {
+	#{{- if has "gaming" .corytheboyd.profiles }}
+	return 0
+	#{{- else }}
+	# shellcheck disable=SC2317
+	return 1
+	#{{- end }}
+}

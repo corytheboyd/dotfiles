@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
+# chezmoi configFile hash: #{{ include .chezmoi.configFile | sha256sum }}
+# chezmoi-corytheboyd shell: #{{ range $file := glob (printf "%s/private_dot_config/chezmoi-corytheboyd/shell/**/*.zsh.tmpl" .chezmoi.sourceDir) }}#{{ include $file | sha256sum }}#{{ end }}
 
 # shellcheck disable=SC1091
 {
@@ -22,5 +24,5 @@ if ! grep -q 'mdns_minimal' /etc/nsswitch.conf; then
 	sudo sed -i 's/^hosts:.*/hosts: files mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns/' /etc/nsswitch.conf
 	log_info "nsswitch.conf updated"
 else
-	log_debug "nsswitch.conf already configured for mDNS"
+	log_info "nsswitch.conf already configured for mDNS"
 fi

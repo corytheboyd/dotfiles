@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # chezmoi:template:left-delimiter="#{{" right-delimiter=}}
 #{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
-# manifest hash: #{{ $manifest.archlinux.packages | toRawJson | sha256sum }}
+# chezmoi configFile hash: #{{ include .chezmoi.configFile | sha256sum }}
+# chezmoi-corytheboyd shell: #{{ range $file := glob (printf "%s/private_dot_config/chezmoi-corytheboyd/shell/**/*.zsh.tmpl" .chezmoi.sourceDir) }}#{{ include $file | sha256sum }}#{{ end }}
 
 # shellcheck disable=SC1091
 {
@@ -32,8 +33,12 @@ fi
 
 log_info "Installing packages..."
 sudo pacman -Rns --noconfirm rust 2>/dev/null || true
-# shellcheck disable=SC2154
+
+# shellcheck disable=SC2154,SC2046
 {
-	sudo pacman -Sy --noconfirm --needed    #{{ $manifest.archlinux.packages.pacman | join " " }}
-	yay -Sy --noconfirm --needed --pgpfetch #{{ $manifest.archlinux.packages.yay | join " " }}
+	log_info "packman packages to install: $(archlinux_packages_pacman)"
+	sudo pacman -Sy --noconfirm --needed $(archlinux_packages_pacman)
+
+	log_info "yay packages to install: $(archlinux_packages_yay)"
+	yay -Sy --noconfirm --needed --pgpfetch $(archlinux_packages_yay)
 }
