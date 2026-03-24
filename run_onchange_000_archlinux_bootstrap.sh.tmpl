@@ -35,5 +35,17 @@ log_info "Bootstrapping archlinux..."
 log_info "Updating system..."
 sudo pacman -Syu --noconfirm
 
+function enable_multilib() {
+	if grep -q '^\[multilib\]' /etc/pacman.conf; then
+		log_debug "multilib already enabled"
+		return 0
+	fi
+	log_info "Enabling multilib repository..."
+	sudo sed -i '/^#\[multilib\]/{N;s/#\[multilib\]\n#Include/[multilib]\nInclude/}' /etc/pacman.conf
+}
+
+log_info "Enabling multilib..."
+enable_multilib
+
 log_info "Installing yay..."
 install_yay
