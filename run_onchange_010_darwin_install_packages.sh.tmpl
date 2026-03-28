@@ -25,14 +25,14 @@ brew bundle \
 	<<'EOF'
 #{{- $manifest := include "private_dot_config/chezmoi-corytheboyd/manifest.json" | fromJson }}
 #{{- range concat $manifest.darwin.homebrew.taps (dig "homebrew" "taps" (list) .) | uniq | sortAlpha }}
-tap "{{ . }}"
+tap "#{{ . }}"
 #{{- end }}
 
 #{{- range concat $manifest.darwin.homebrew.brews (dig "homebrew" "brews" (list) .) | uniq | sortAlpha }}
-brew "{{ . }}"
+brew "#{{ . }}"
 #{{- end }}
 
 #{{- range concat $manifest.darwin.homebrew.casks (dig "homebrew" "casks" (list) .) | uniq | sortAlpha }}
-cask "{{ . }}"
+cask "#{{ . }}"
 #{{- end }}
 EOF
