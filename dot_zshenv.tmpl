@@ -3,8 +3,15 @@
 # shellcheck disable=SC1091
 source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 
+export PATH="$PATH:$HOME/.local/bin"
+
 # bitwarden ssh agent
 # https://bitwarden.com/help/ssh-agent
-export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+export SSH_AUTH_SOCK
 
-export PATH="$PATH:$HOME/.local/bin"
+# darwin doesn't use XDG paths, so sops can't find it by default
+if os_is_darwin; then
+	SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+	export SOPS_AGE_KEY_FILE
+fi
