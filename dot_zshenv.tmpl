@@ -7,7 +7,4 @@ source "{{ .chezmoi.homeDir }}/.config/chezmoi-corytheboyd/shell.sh"
 # https://bitwarden.com/help/ssh-agent
 export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 
-EDITOR="$(which nvim)"
-export EDITOR
-
 export PATH="$PATH:$HOME/.local/bin"

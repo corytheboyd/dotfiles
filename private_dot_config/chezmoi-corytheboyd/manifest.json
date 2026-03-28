@@ -57,6 +57,7 @@
         "libyaml"
       ],
       "casks": [
+        "actual",
         "alfred",
         "bitwarden",
         "claude",

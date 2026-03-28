@@ -16,5 +16,8 @@
         "editor.quickSuggestions": {
             "strings": true
         }
+    },
+    "debug.javascript.defaultRuntimeExecutable": {
+        "pwa-node": "/Users/corytheboyd/.local/share/mise/shims/node"
     }
 }

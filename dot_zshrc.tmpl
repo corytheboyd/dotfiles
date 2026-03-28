@@ -131,3 +131,7 @@ eval "$(sops completion zsh)"
 if os_is_darwin; then
 	eval "$(colima completion zsh)"
 fi
+
+# Note: set this here instead of zshenv so that homebrew paths are set
+EDITOR="$(which nvim)"
+export EDITOR
