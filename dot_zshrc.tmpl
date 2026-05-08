@@ -130,7 +130,10 @@ eval "$(rbw gen-completions zsh)"
 # https://github.com/getsops/sops
 eval "$(sops completion zsh)"
 
-# colima completion
+# docker shell completion
+eval "$(docker completion zsh)"
+
+# colima shell completion
 if os_is_darwin; then
 	eval "$(colima completion zsh)"
 fi
