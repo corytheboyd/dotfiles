@@ -138,6 +138,11 @@ if os_is_darwin; then
 	eval "$(colima completion zsh)"
 fi
 
+# brew shell completion
+eval "$(brew shellenv)"
+autoload -Uz compinit
+compinit
+
 # Note: set this here instead of zshenv so that homebrew paths are set
 EDITOR="$(which nvim)"
 export EDITOR
