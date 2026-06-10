@@ -22,6 +22,10 @@ Host conrad_nas_local
   User corytheboyd
   HostName theironwolves.local
 
+Host superstation
+  User root
+  HostName superstation.localdomain
+
 Host *
   IdentityAgent {{ .chezmoi.homeDir }}/.bitwarden-ssh-agent.sock
   SetEnv TERM=xterm-256color
