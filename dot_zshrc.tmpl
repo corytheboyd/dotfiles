@@ -139,9 +139,11 @@ if os_is_darwin; then
 fi
 
 # brew shell completion
-eval "$(brew shellenv)"
-autoload -Uz compinit
-compinit
+if os_is_darwin; then
+	eval "$(brew shellenv)"
+	autoload -Uz compinit
+	compinit
+fi
 
 # Note: set this here instead of zshenv so that homebrew paths are set
 EDITOR="$(which nvim)"
