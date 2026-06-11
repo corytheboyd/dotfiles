@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "darwin" -}}
 {
   "credsStore": "osxkeychain",
   "currentContext": "colima",
@@ -10,3 +11,12 @@
     }
   }
 }
+{{ else -}}
+{
+  "plugins": {
+    "-x-cli-hints": {
+      "enabled": "true"
+    }
+  }
+}
+{{ end -}}

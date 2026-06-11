@@ -109,6 +109,7 @@
           "ripgrep",
           "shfmt",
           "sops",
+          "sshfs",
           "starship",
           "tree",
           "wget",
