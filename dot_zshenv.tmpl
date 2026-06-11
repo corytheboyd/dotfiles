@@ -11,7 +11,5 @@ SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 export SSH_AUTH_SOCK
 
 # darwin doesn't use XDG paths, so sops can't find it by default
-if os_is_darwin; then
-	SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
-	export SOPS_AGE_KEY_FILE
-fi
+SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+export SOPS_AGE_KEY_FILE
