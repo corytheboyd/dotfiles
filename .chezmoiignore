@@ -13,6 +13,7 @@ test
 {{ if ne .chezmoi.os "darwin" }}
 Library
 .local/config/alfred
+.colima
 {{ end }}
 
 ###############################################################################
