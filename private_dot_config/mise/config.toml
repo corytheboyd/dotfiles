@@ -6,25 +6,3 @@
 
 [settings.ruby]
 compile = false
-
-[tools]
-
-[tools.ruby]
-version = "latest"
-preinstall = '''
-if os_is_darwin; then
-    brew install libyaml
-fi
-'''
-
-[tools.go]
-version = "latest"
-
-[tools.node]
-version = "24"
-
-[tools.python]
-version = "3"
-
-[tools.rust]
-version = "latest"
